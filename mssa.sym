@@ -1,0 +1,80 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+013     CCP_1_LOW
+013     CCP_1
+014     CCP_1_HIGH
+019.6   C1OUT
+019.7   C2OUT
+020     @SCRATCH
+021     @SCRATCH
+021     _RETURN_
+022     @SCRATCH
+023     @SCRATCH
+024     read_sec
+025     read_ssa
+026     save_ssa
+027     MAIN.c_tray_on
+028     MAIN.c_ss
+029.0   wait1234sec.f_bssa
+029     refresh_read_button.tread_ssa
+029.1   wait1234sec.res
+02A     wait1234sec.count_except
+02A.0   refresh_read_button.f_bsec
+02B     wait1234sec.i
+02B     refresh_read_button.cflash
+02C     @DIV88.P1
+02C     led_flash.z
+02C.0   is_on_bssa.res
+02D     @DIV88.P1
+02D     led_flash.i
+02D     is_on_bssa.c_bssa
+02E     is_on_bssa.i
+02E     @DIV88.@SCRATCH1
+02F     @delay_ms1.P1
+09B-09C @READ_PROGRAM_MEMORY8.P1
+
+ROM Allocation:
+000004  @delay_ms1
+000018  is_on_bssa
+000037  wait1234sec
+000081  tray_to_on
+000098  refresh_read_button
+0000DA  @DIV88
+0000F2  led_flash
+00010F  @cinit1
+00010F  MAIN
+000123  @cinit2
+
+Project Directory:
+    D:\Install\VW\Manuals\T-cross_2024_bf3\MemSSA\MemSSA_16f684_024_save_t_car_2026_ok\
+
+Project Files:
+    mssa.c                                                  [16-ώνθ-26 15:23  CRC=1A38A06B]
+    ..\..\..\..\..\..\PICC_5115\Devices\16f684.h            [07-μΰπ-23 19:18  CRC=80E9E0D1]
+
+Source signature=1C0C620D
+Program memory checksum=0000
+Hex file CRC=DD65
+
+Units:
+    D:\Install\VW\Manuals\T-cross_2024_bf3\MemSSA\MemSSA_16f684_024_save_t_car_2026_ok\mssa (main)
+
+Compiler Settings:
+    Processor:      PIC16F684
+    Pointer Size:   8
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:   CCS5
+
+Output Files:
+    XREF file:   mssa.xsym
+    Errors:      mssa.err
+    Ext Symbols: mssa.esym
+    INHX8:       mssa.hex
+    Symbols:     mssa.sym
+    List:        mssa.lst
+    Debug/COFF:  mssa.cof
+    Project:     mssa.ccspjt
+    Call Tree:   mssa.tre
+    Statistics:  mssa.STA
