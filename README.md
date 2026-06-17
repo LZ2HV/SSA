@@ -19,8 +19,9 @@ How its work:
 1. If Start/Stop System is switched to off from ((A) button), this state will be saved after 1sec.
 2. If Start/Stop System is switched to on from ((A) button), this state will be saved after 4sec.
 3. At start ignition saved (Start/Stop System is off) will be returned after 6sec (6sec is default value).
-4. If you wanna to change this 6sec, just push once button in the modile, modile LED, will be flashing 7 times = 7sec.
-next bush of the button, will be change to 8sec, modile LED, will be flashing 8 times ... (2 to 8sec).
+4. If you wanna to change this 6sec, just push once button in the module, module LED, will be flashing 7 times = 7sec.
+next bush of the button, will be change to 8sec, module LED, will be flashing 8 times ... (2 to 8sec).
+5. Main cicle of the device is indicated from module LED, every 3sec one short flashing.
 
 Important:
 If you are not tech savvy, do not attempt this.
