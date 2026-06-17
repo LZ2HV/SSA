@@ -23,7 +23,7 @@ How its work:
 next bush of the button, will be change to 8sec, module LED, will be flashing 8 times ... (2 to 8sec).
 5. Main cicle of the device is indicated from module LED, every 3sec one short flashing.
 
-Schematics and boards is in directory "sch", thers have tre variants, two with DIP socket one with SMD elements,
+Schematics and boards is in directory "sch", thers have three variants, two with DIP socket one with SMD elements,
  in down pictures is presented variant with SMD elements (directory sch/smd). 
 
 Important:
