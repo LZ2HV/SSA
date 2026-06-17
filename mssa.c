@@ -45,17 +45,11 @@
 #define A05_MMM         (PIN_A5)
 #endif
 
-//20=1s 40=2s 60=3s 80=4s 100=5s 120=6s 140=7s 160=8s
-#define MAX_SEC 160//160 = 8s
-#define MIN_SEC 40 //40=2s  20=1s
-#define DEF_SEC 120//120=6s old=100=5s 80=4s
-#define MIN_SEC_VAR 20    //need to be->MIN_SEC_VAR <= MIN_SEC //20*50=1000ms 22*50=1100ms
-#define COU_MIN_SEC_EXC 29//need to be->COU_MIN_SEC_EXC > COU_MIN_SEC_VAR //=(27+1)=28*50=1400ms =(23+1)=24*50=1200ms =(19+1)=20*50=1000ms =(29+1)=30*50=1500ms
-#define COU_MIN_SEC_VAR 22//need to be->COU_MIN_SEC_VAR < MIN_SEC         //=(15+1)=16*50=800ms =(19+1)=20*50=1000ms =(21+1)=22*50=1100ms =(23+1)=24*50=1200ms
-//#define COU_SAVE_SECL 19  //old=(6+1) 7=1400ms 10=2000ms 12=2400ms 13=2600ms (13+1)=14*200=2800ms (14+1)=15*200=3000ms (18+1)=19*200=3800ms (19+1)=20*200=4000ms (24+1)=25*200=5000ms
-//#define COU_SAVE_SECH 8   //old=(6+1) 7=1400ms 10=2000ms 12=2400ms 13=2600ms (13+1)=14*200=2800ms (14+1)=15*200=3000ms
 #define COU_SAVE_SECL 16  //17*150+17*100=2550+1700=4250s
-#define COU_SAVE_SECH 3   //3=1250 4*170+4*80=680+320=1000  8*158+8*92=1264+736=2000s
+#define COU_SAVE_SECH 3   //3=750 4*170+4*80=680+320=1000  8*158+8*92=1264+736=2000s
+#define MAX_SEC 40 //40=40*200=8s
+#define MIN_SEC 10 //10=10*200=2s
+#define DEF_SEC 30 //30=30*200=6s
 
 #if defined PIC12F683X
 #define BUT_SEC         (PIN_A2)
@@ -70,11 +64,11 @@ BOOLEAN is_on_bssa(void)
 {
     BOOLEAN res = false;
     int c_bssa = 0;
-    for (int i=0; i<80; ++i)//160ms old=100ms
+    for (int i=0; i<80; ++i)//160ms
     {
         if (!input(SSA_BUT)) c_bssa++; 
         else c_bssa = 0;
-        if (c_bssa > 40)//80ms old=92
+        if (c_bssa > 40)//80ms
         {
             res = true;
             break;
@@ -86,49 +80,29 @@ BOOLEAN is_on_bssa(void)
 int read_sec = 0;
 BOOLEAN wait1234sec(void)
 {
-    BOOLEAN f_bssa = false;
     BOOLEAN res = true;
     int count_except = 0;
-    for (int i=0; i<read_sec; ++i)//20=1s 40=2s 60=3s 80=4s 100=5s 120=6s 140=7s 160=8s
+    for (int i=0; i<read_sec; ++i)
     {
-        delay_ms(50);
-        f_bssa = input(SSA_BUT);
-        if (!f_bssa)
+        delay_ms(40);
+        if (is_on_bssa())//full=160+40=200ms
         {
             count_except++;
-            if (count_except > COU_MIN_SEC_EXC)
+            if (count_except > 2)//except=(40+80=120)*3=360ms
             {
                 res = false;
-#if defined DEBUG_EXCEP
-                output_high(DEB_EXE);
-                delay_ms(100);
-                output_low(DEB_EXE);
-#endif
                 break;
-            }
-            if (i > (read_sec - MIN_SEC_VAR))//20=1s
-            {
-                if (count_except > COU_MIN_SEC_VAR)//16*50=800ms
-                {
-                    res = false;
-#if defined DEBUG_EXCEP
-                    output_high(DEB_EXE);
-                    delay_ms(100);
-                    output_low(DEB_EXE);
-#endif
-                    break;
-                }
             }
         }
         else count_except = 0;
         if (count_except > 0) output_high(DEB_EXC_SAV_MIN);//fast low Volts -> save_ssa > 0
         else output_low(DEB_EXC_SAV_MIN);
     }
-    output_low(DEB_EXC_SAV_MIN);
-    if (res && count_except > 3)//(3+1)*50=200ms
+    if (res && count_except > 0)
     {
         if (is_on_bssa()) res = false;
     }
+    output_low(DEB_EXC_SAV_MIN);
     return res;
 }
 void tray_to_on(void)
@@ -171,10 +145,10 @@ void refresh_read_button(void)
     delay_ms(10);
     if (!f_bsec)
     {
-        if (read_sec>=MAX_SEC) read_sec = MIN_SEC;//20=1s 40=2s 60=3s 80=4s 100=5s 120=6s
-        else read_sec += 20;
+        if (read_sec>=MAX_SEC) read_sec = MIN_SEC;
+        else read_sec += 5;
         write_eeprom(1,read_sec);
-        int cflash = read_sec/20;
+        int cflash = read_sec/5;
         led_flash(cflash);
 #if defined DEBUG_MAINN
         f_main = 1;
@@ -293,7 +267,7 @@ void main(void)
             {
                 c_tray_on=0;
 #if defined DEBUG_MAINN
-                f_main = 0;
+                f_main=0;
 #endif
             }
             if (c_tray_on > 0 && c_tray_on < 18) //else if (c_tray_on<17)
