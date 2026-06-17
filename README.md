@@ -19,5 +19,5 @@ Connections: For T-Cross (Switch module 1 in centre console, module EX23, 10 pin
 	If you are not tech savvy, do not attempt this.
 
 ![Top](https://github.com/LZ2HV/SSA/blob/5163504e4d249dbd926a3ff0e3a01d93f237d9e3/pic/top_pic.png)
-![Bottom](https://github.com/LZ2HV/SSA/blob/5163504e4d249dbd926a3ff0e3a01d93f237d9e3/pic/bottom_pic.png)
+![Bottom](https://github.com/LZ2HV/SSA/blob/ab58418ad07e1950e381db28720cb779d567b959/pic/bottom_pic.png)
 ![Sch](https://github.com/LZ2HV/SSA/blob/d15fbafb7d327980c333e8f883bb0fbb9c20ada8/pic/Sch.png)
