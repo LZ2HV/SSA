@@ -15,6 +15,13 @@ Connections: For T-Cross (Switch module 1 in centre console, module EX23, 10 pin
 3. 12V = KL15, ignition (pin 9).
 4. GND = GND (pin 1).
 
+How its work:
+1. If Start/Stop System is switched to off from ((A) button), this state will be saved after 1sec.
+2. If Start/Stop System is switched to on from ((A) button), this state will be saved after 4sec.
+3. At start ignition saved (Start/Stop System is off) will be returned after 6sec (6sec is default value).
+4. If you wanna to change this 6sec, just push once button in the modile, modile LED, will be flashing 7 times = 7sec.
+next bush of the button, will be change to 8sec, modile LED, will be flashing 8 times ... (2 to 8sec).
+
 Important:
 If you are not tech savvy, do not attempt this.
 1. All zero resistors are not placed at the beginning (R9, R13, R14).
