@@ -12,14 +12,15 @@ Current compiled HEX is for PIC16F684.
 Connections: For T-Cross (Switch module 1 in centre console, module EX23, 10 pins connector black),
 1. LED = PWM signal from Start/Stop LED, 200Hz duty cycle 20-90%  (pin 6).
 2. BUT = Button Start/Stop (pin 3).
-3. 12V = KL15 (pin 9).
+3. 12V = KL15, ignition (pin 9).
 4. GND = GND (pin 1).
 
 Important:
 If you are not tech savvy, do not attempt this.
-1. Resistor R9 are placed after programming.  
-2. If Button Start-Stop work with GND (T-Cross) Add R14, Remove R10 and R13.
-3. If Button Start-Stop work with Plus (some Skoda models) Add R13, Remove R14.
+1. All zero resistors are not placed at the beginning (R9, R13, R14).
+2. Resistor R9 are placed after programming.  
+3. If Button Start-Stop work with GND (T-Cross) Add R14, Remove R10 and R13.
+4. If Button Start-Stop work with Plus (some Skoda models) Add R13, Remove R14.
 ![Top](https://github.com/LZ2HV/SSA/blob/5163504e4d249dbd926a3ff0e3a01d93f237d9e3/pic/top_pic.png)
 ![Bottom](https://github.com/LZ2HV/SSA/blob/ab58418ad07e1950e381db28720cb779d567b959/pic/bottom_pic.png)
 ![Sch](https://github.com/LZ2HV/SSA/blob/d15fbafb7d327980c333e8f883bb0fbb9c20ada8/pic/Sch.png)
