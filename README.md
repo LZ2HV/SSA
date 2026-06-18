@@ -34,11 +34,13 @@ If you are not tech savvy, do not attempt this.
 4. If Button Start-Stop work with Plus (some Skoda models) Add R13, Remove R14.<br/>
 SMD variant: Gerber file sch/smd/mssaPIC12smd_2026-06-16.zip<br/>
 ![Top](https://github.com/LZ2HV/SSA/blob/5163504e4d249dbd926a3ff0e3a01d93f237d9e3/pic/top_pic.png)
-![Bottom](https://github.com/LZ2HV/SSA/blob/ab58418ad07e1950e381db28720cb779d567b959/pic/bottom_pic.png)
+![Bottom](https://github.com/LZ2HV/SSA/blob/ab58418ad07e1950e381db28720cb779d567b959/pic/bottom_pic.png)<br/>
 ![Sch](https://github.com/LZ2HV/SSA/blob/d15fbafb7d327980c333e8f883bb0fbb9c20ada8/pic/Sch.png)<br/>
 DIP PIC12 variant: Gerber file sch/mssaPIC12_2026-06-18.zip<br/>
 ![Top](https://github.com/LZ2HV/SSA/blob/b3624d15f0a9bdb992976c37291aef9ca946b0ae/pic/top12dip.png)
 ![Bottom](https://github.com/LZ2HV/SSA/blob/b3624d15f0a9bdb992976c37291aef9ca946b0ae/pic/bott12dip.png)<br/>
+![Sch](https://github.com/LZ2HV/SSA/blob/078a15eff734ba0f5b2572128a94c9ce6467dbab/pic/sch12.png)
 DIP PIC16 variant: Gerber file sch/mssaPIC16_2026-06-18.zip<br/>
 ![Top](https://github.com/LZ2HV/SSA/blob/b3624d15f0a9bdb992976c37291aef9ca946b0ae/pic/top16dip.png)
-![Bottom](https://github.com/LZ2HV/SSA/blob/b3624d15f0a9bdb992976c37291aef9ca946b0ae/pic/bot16dip.png)
+![Bottom](https://github.com/LZ2HV/SSA/blob/b3624d15f0a9bdb992976c37291aef9ca946b0ae/pic/bot16dip.png)<br/>
+![Sch](https://github.com/LZ2HV/SSA/blob/078a15eff734ba0f5b2572128a94c9ce6467dbab/pic/sch16.png)
