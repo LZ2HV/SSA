@@ -39,8 +39,8 @@ SMD variant: Gerber file sch/smd/mssaPIC12smd_2026-06-16.zip<br/>
 DIP PIC12 variant: Gerber file sch/mssaPIC12_2026-06-18.zip<br/>
 ![Top](https://github.com/LZ2HV/SSA/blob/b3624d15f0a9bdb992976c37291aef9ca946b0ae/pic/top12dip.png)
 ![Bottom](https://github.com/LZ2HV/SSA/blob/b3624d15f0a9bdb992976c37291aef9ca946b0ae/pic/bott12dip.png)<br/>
-![Sch](https://github.com/LZ2HV/SSA/blob/078a15eff734ba0f5b2572128a94c9ce6467dbab/pic/sch12.png)
+![Sch](https://github.com/LZ2HV/SSA/blob/7a2ee1edfffc32abe9e8e6a552045779106d7128/pic/sch12.png)
 DIP PIC16 variant: Gerber file sch/mssaPIC16_2026-06-18.zip<br/>
 ![Top](https://github.com/LZ2HV/SSA/blob/b3624d15f0a9bdb992976c37291aef9ca946b0ae/pic/top16dip.png)
 ![Bottom](https://github.com/LZ2HV/SSA/blob/b3624d15f0a9bdb992976c37291aef9ca946b0ae/pic/bot16dip.png)<br/>
-![Sch](https://github.com/LZ2HV/SSA/blob/078a15eff734ba0f5b2572128a94c9ce6467dbab/pic/sch16.png)
+![Sch](https://github.com/LZ2HV/SSA/blob/7a2ee1edfffc32abe9e8e6a552045779106d7128/pic/sch16.png)
