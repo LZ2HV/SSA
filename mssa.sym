@@ -13,23 +13,23 @@
 025     read_ssa
 026     save_ssa
 027     f_main
-028     MAIN.c_tray_on
-029     MAIN.c_ss
-02A.0   wait1234sec.res
-02A     refresh_read_button.tread_ssa
-02B.0   refresh_read_button.f_bsec
-02B     wait1234sec.count_except
+028.0   f_b_sec
+029     MAIN.c_tray_on
+02A     MAIN.c_ss
+02B.0   wait1234sec.res
+02B     refresh_read_button.tread_ssa
 02C     refresh_read_button.cflash
-02C     wait1234sec.i
-02D     led_flash.z
+02C     wait1234sec.count_except
+02D     wait1234sec.i
 02D     @DIV88.P1
-02D.0   is_on_bssa.res
+02D     led_flash.z
 02E     led_flash.i
+02E.0   is_on_bssa.res
 02E     @DIV88.P1
-02E     is_on_bssa.c_bssa
-02F     is_on_bssa.i
+02F     is_on_bssa.c_bssa
 02F     @DIV88.@SCRATCH1
-030     @delay_ms1.P1
+030     is_on_bssa.i
+031     @delay_ms1.P1
 09B-09C @READ_PROGRAM_MEMORY8.P1
 
 ROM Allocation:
@@ -38,25 +38,25 @@ ROM Allocation:
 000037  wait1234sec
 00006E  tray_to_on
 000085  refresh_read_button
-0000C7  @DIV88
-0000DF  led_flash
-0000FE  @cinit1
-0000FE  MAIN
-000113  @cinit2
+0000CB  @DIV88
+0000E3  led_flash
+000102  @cinit1
+000102  MAIN
+000118  @cinit2
 
 Project Directory:
-    D:\Install\VW\Manuals\T-cross_2024_bf3\MemSSA\MemSSA_16f684_025_save_t_car_2026_ok\
+    D:\Install\VW\Manuals\T-cross_2024_bf3\MemSSA\MemSSA_16f684_026_save_t_car_2026_ok\
 
 Project Files:
-    mssa.c                                                  [17-ώνθ-26 15:04  CRC=E846F729]
+    mssa.c                                                  [18-ώνθ-26 13:35  CRC=FF8DF08A]
     ..\..\..\..\..\..\PICC_5115\Devices\16f684.h            [07-μΰπ-23 19:18  CRC=80E9E0D1]
 
-Source signature=EA1AB8CB
+Source signature=0161B22C
 Program memory checksum=0000
-Hex file CRC=73AF
+Hex file CRC=F77C
 
 Units:
-    D:\Install\VW\Manuals\T-cross_2024_bf3\MemSSA\MemSSA_16f684_025_save_t_car_2026_ok\mssa (main)
+    D:\Install\VW\Manuals\T-cross_2024_bf3\MemSSA\MemSSA_16f684_026_save_t_car_2026_ok\mssa (main)
 
 Compiler Settings:
     Processor:      PIC16F684

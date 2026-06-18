@@ -1,9 +1,9 @@
-D G "__PCM__" 0 289 ""5.115""
-D G "__DEVICE__" 0 289 "684"
-D G "__DATE__" 0 289 ""17-Jun-26""
-D G "__TIME__" 0 289 ""15:04:37""
-D G "_UNICODE" 0 289 ""?""
-D G "__EVAL" 0 289 ""?"" "* mssa.c"
+D G "__PCM__" 0 0 ""5.115""
+D G "__DEVICE__" 0 0 ""
+D G "__DATE__" 0 0 ""18-Jun-26""
+D G "__TIME__" 0 0 ""13:35:52""
+D G "_UNICODE" 0 0 ""?""
+D G "__EVAL" 0 0 ""?"" "* mssa.c"
 C G "" 0 1 1 "*"
 C G "" 0 1 1 "*"
 C G "" 0 1 1 "*"
@@ -308,9 +308,9 @@ F N "read_adc" 1 337 ""
 f G "read_adc" 1 337 "int16()" `143 
 F N "read_adc" 1 338 ""
 V L "mode" 1 338 "int8" `144 
-f G "read_adc" 1 338 "int16(int8 mode,int16 pins)" `143 
+f G "read_adc" 1 338 "int16(int8 mode)" `143 
 F N "adc_done" 1 339 ""
-F B "adc_done" 1 339 "int8(int8 mode,int16 pins)" `143  "Constants used for SETUP_ADC() are:"
+F B "adc_done" 1 339 "int8(int8 mode)" `143  "Constants used for SETUP_ADC() are:"
 D G "ADC_OFF" 1 341 "0" "ADC Off"
 D G "ADC_CLOCK_DIV_2" 1 342 "0x100"
 D G "ADC_CLOCK_DIV_4" 1 343 "0x40"
@@ -747,9 +747,9 @@ F B "i2c_transfer_in" 1 500 "int8(int8 stream,int8 address,*int8 rData,int8 rCou
 F N "spi_xfer" 1 503 ""
 F B "spi_xfer" 1 503 "int8()" `444 
 F N "spi_xfer" 1 504 ""
-f G "spi_xfer" 1 504 "int16(int8 i2c_write)" `445 
+f G "spi_xfer" 1 504 "int16()" `445 
 F N "spi_xfer" 1 505 ""
-f G "spi_xfer" 1 505 "int32(int8 i2c_write)" `445 
+f G "spi_xfer" 1 505 "int32()" `445 
 F N "spi_xfer" 1 506 ""
 V L "data" 1 506 "int8" `446 
 F B "spi_xfer" 1 506 "int8(int8 data)" `445 
@@ -829,18 +829,18 @@ F B "spi_prewrite" 1 525 "void(int8 ,int32 data)" `498
 F N "spi_xfer_in" 1 526 ""
 F B "spi_xfer_in" 1 526 "int8()" `501 
 F N "spi_xfer_in" 1 527 ""
-f G "spi_xfer_in" 1 527 "int16(int8 spi_xfer)" `502 
+f G "spi_xfer_in" 1 527 "int16()" `502 
 F N "spi_xfer_in" 1 528 ""
-f G "spi_xfer_in" 1 528 "int32(int8 spi_xfer)" `502 
+f G "spi_xfer_in" 1 528 "int32()" `502 
 F N "spi_xfer_in" 1 529 ""
 V L "bits" 1 529 "int8" `503 
 F B "spi_xfer_in" 1 529 "int8(int8 bits)" `502 
 F N "spi_xfer_in" 1 530 ""
 V L "bits" 1 530 "int8" `505 
-f G "spi_xfer_in" 1 530 "int16(int8 bits,int8 spi_xfer)" `504 
+f G "spi_xfer_in" 1 530 "int16(int8 bits)" `504 
 F N "spi_xfer_in" 1 531 ""
 V L "bits" 1 531 "int8" `505 
-f G "spi_xfer_in" 1 531 "int32(int8 bits,int8 spi_xfer)" `504 
+f G "spi_xfer_in" 1 531 "int32(int8 bits)" `504 
 F N "spi_xfer_in" 1 532 ""
 V L "stream" 1 532 "int8" `505 
 V L "bits" 1 532 "int8" `506 
@@ -848,11 +848,11 @@ F B "spi_xfer_in" 1 532 "int8(int8 stream,int8 bits)" `504
 F N "spi_xfer_in" 1 533 ""
 V L "stream" 1 533 "int8" `505 
 V L "bits" 1 533 "int8" `509 
-f G "spi_xfer_in" 1 533 "int16(int8 stream,int8 bits,int16 bit)" `507 
+f G "spi_xfer_in" 1 533 "int16(int8 stream,int8 bits)" `507 
 F N "spi_xfer_in" 1 534 ""
 V L "stream" 1 534 "int8" `505 
 V L "bits" 1 534 "int8" `509 
-f G "spi_xfer_in" 1 534 "int32(int8 stream,int8 bits,int16 bit)" `507 
+f G "spi_xfer_in" 1 534 "int32(int8 stream,int8 bits)" `507 
 F N "spi_transfer" 1 535 ""
 V L "wData" 1 535 "*int8" `508 
 V L "rData" 1 535 "*int8" `509 
@@ -921,9 +921,9 @@ F B "rtos_stats" 1 555 "void(int8 task,*int8 stat)" `550  "#use timer() Prototyp
 F N "get_ticks" 1 558 ""
 F B "get_ticks" 1 558 "int8()" `553 
 F N "get_ticks" 1 559 ""
-f G "get_ticks" 1 559 "int16(int8 cdata)" `554 
+f G "get_ticks" 1 559 "int16()" `554 
 F N "get_ticks" 1 560 ""
-f G "get_ticks" 1 560 "int32(int8 cdata)" `554 
+f G "get_ticks" 1 560 "int32()" `554 
 F N "get_ticks" 1 561 ""
 V L "stream" 1 561 "int8" `555 
 F B "get_ticks" 1 561 "int8(int8 stream)" `554 
@@ -1070,7 +1070,7 @@ D G "DEB_EXE" 0 43 " (PIN_C3)"
 D G "DEB_EXC_SAV_MIN" 0 44 " (PIN_C2)"
 D G "A05_MMM" 0 45 " (PIN_A5)"
 D G "COU_SAVE_SECL" 0 48 "16" "17*150+17*100=2550+1700=4250s"
-D G "COU_SAVE_SECH" 0 49 "3" "3=750 4*170+4*80=680+320=1000  8*158+8*92=1264+736=2000s"
+D G "COU_SAVE_SECH" 0 49 "2" "3=750 4*170+4*80=680+320=1000  8*158+8*92=1264+736=2000s"
 D G "MAX_SEC" 0 50 "40" "40=40*200=8s"
 D G "MIN_SEC" 0 51 "10" "10=10*200=2s"
 D G "DEF_SEC" 0 52 "30" "30=30*200=6s"
@@ -1099,25 +1099,27 @@ V L "i" 0 119 "int8" `641
 V G "read_ssa" 0 129 "int8" `642 
 V G "save_ssa" 0 130 "int8" `643 
 V G "f_main" 0 132 "int8" `644 
-F N "refresh_read_button" 0 134 ""
-F G "refresh_read_button" 0 135 "void()" `645 
-V L "tread_ssa" 0 136 "int8" `646 
-V L "f_bsec" 0 144 "int1" `647 
-V L "cflash" 0 151 "int8" `648 
-F N "MAIN" 0 163 ""
-F G "MAIN" 0 164 "void()" `652  "Initialization *"
+V G "f_b_sec" 0 134 "int1" `645 
+C L "refresh_read_button" 0 25 1 "FUNCTION"
+F N "refresh_read_button" 0 135 ""
+F G "refresh_read_button" 0 136 "void()" `646 
+V L "tread_ssa" 0 137 "int8" `647 
+V L "cflash" 0 161 "int8" `648 
+F N "MAIN" 0 174 ""
+F G "MAIN" 0 175 "void()" `652  "Initialization *"
 C L "MAIN" 0 25 1 "FUNCTION"
 C L "MAIN" 0 25 1 "FUNCTION"
 C L "MAIN" 0 25 1 "FUNCTION"
 C L "MAIN" 0 25 1 "FUNCTION"
 C L "MAIN" 0 25 3 "FUNCTION"
 C L "MAIN" 0 25 1 "FUNCTION"
-V L "c_tray_on" 0 200 "int8" `655 
-V L "c_ss" 0 201 "int8" `656 
+V L "c_tray_on" 0 211 "int8" `655 
+V L "c_ss" 0 212 "int8" `656 
 C L "MAIN" 0 25 1 "FUNCTION"
 C L "MAIN" 0 25 1 "FUNCTION"
 C L "MAIN" 0 25 1 "FUNCTION"
 C L "MAIN" 0 25 5 "FUNCTION"
+C L "MAIN" 0 25 1 "FUNCTION"
 C L "MAIN" 0 25 1 "FUNCTION"
 C L "MAIN" 0 25 1 "FUNCTION"
 C L "MAIN" 0 25 1 "FUNCTION"

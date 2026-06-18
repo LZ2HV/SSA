@@ -46,7 +46,7 @@
 #endif
 
 #define COU_SAVE_SECL 16  //17*150+17*100=2550+1700=4250s
-#define COU_SAVE_SECH 3   //3=750 4*170+4*80=680+320=1000  8*158+8*92=1264+736=2000s
+#define COU_SAVE_SECH 2   //3=750 4*170+4*80=680+320=1000  8*158+8*92=1264+736=2000s
 #define MAX_SEC 40 //40=40*200=8s
 #define MIN_SEC 10 //10=10*200=2s
 #define DEF_SEC 30 //30=30*200=6s
@@ -131,6 +131,7 @@ int save_ssa = 0;
 #if defined DEBUG_MAINN
 int f_main = 0;
 #endif
+BOOLEAN f_b_sec = false;//button is up logic
 void refresh_read_button(void)
 {
     int tread_ssa = 2;
@@ -140,24 +141,34 @@ void refresh_read_button(void)
         save_ssa=1;
         read_ssa = tread_ssa;
         delay_ms(100);
-    }
-    BOOLEAN f_bsec = input(BUT_SEC);
+    } 
     delay_ms(10);
-    if (!f_bsec)
+    if (!input(BUT_SEC))
     {
-        if (read_sec>=MAX_SEC) read_sec = MIN_SEC;
-        else read_sec += 5;
-        write_eeprom(1,read_sec);
-        int cflash = read_sec/5;
-        led_flash(cflash);
-#if defined DEBUG_MAINN
+        f_b_sec = true;
+#if defined DEBUG_MAINN        
         f_main = 1;
 #endif        
+    }
+    else
+    {
+        if (f_b_sec)
+        {
+            f_b_sec = false;
+            if (read_sec>=MAX_SEC) read_sec = MIN_SEC;
+            else read_sec += 5;
+            write_eeprom(1,read_sec);
+            int cflash = read_sec/5;
+            led_flash(cflash);
+#if defined DEBUG_MAINN
+            f_main = 1;
+#endif        
 #if defined DEBUG_WRITE
-        output_high(DEB_WRI);
-        delay_ms(200);
-        output_low(DEB_WRI);
+            output_high(DEB_WRI);
+            delay_ms(200);
+            output_low(DEB_WRI);
 #endif
+        }
     }
 }
 void main(void)
@@ -230,13 +241,13 @@ void main(void)
         {
            h=true; output_high(DEB_EXE);
         }*/
-        delay_ms(90);//90+160=250ms  old=150+100=250ms
-        if (c_tray_on==0) refresh_read_button();
+        delay_ms(90);//90+160=250ms
+        if (c_tray_on==0) refresh_read_button();//80 or 160
         c_ss = COU_SAVE_SECL;
-        if (read_ssa==3) 
+        if (read_ssa==3)
         {
             c_ss = COU_SAVE_SECH; 
-            if (c_tray_on==0) delay_ms(80);//80+90+80=250ms
+            if (c_tray_on==0) delay_ms(80);//90+80+80=250ms
         }
         if (save_ssa > c_ss)
         {
