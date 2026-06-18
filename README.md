@@ -45,4 +45,4 @@ DIP PIC16 variant: Gerber file sch/mssaPIC16_2026-06-18.zip<br/>
 ![Bottom](https://github.com/LZ2HV/SSA/blob/b3624d15f0a9bdb992976c37291aef9ca946b0ae/pic/bot16dip.png)<br/>
 ![Sch](https://github.com/LZ2HV/SSA/blob/7a2ee1edfffc32abe9e8e6a552045779106d7128/pic/sch16.png)<br/>
 Prototype: In My VW T-Cross 2025<br/>
-![Sch](https://github.com/LZ2HV/SSA/blob/aa41d21a928631c7bed4fb28985d4fc1029c4b20/pic/prototype.jpg
+![Sch](https://github.com/LZ2HV/SSA/blob/aa41d21a928631c7bed4fb28985d4fc1029c4b20/pic/prototype.jpg)
