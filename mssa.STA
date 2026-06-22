@@ -1,51 +1,51 @@
 
-ROM used:   528/2048 (26%)
-            528/2048 (26%) including unused fragments
+ROM used:   540/2048 (26%)
+            540/2048 (26%) including unused fragments
 
             0.6 Average locations per line
             3.8 Average locations per statement
 
 RAM used:   11/128 (9%) at main() level
-            18/128 (14%) worst case
+            20/128 (16%) worst case
 
 Stack used: 2 worst case (2 in main + 0 for interrupts)
 Stack size: 8
 
 Lines Stmts  %   Files
 ----- ----- ---  -----
-  294   139 100  mssa.c
+  299   143 100  mssa.c
   656     0   0  ..\..\..\..\..\..\PICC_5115\Devices\16f684.h
 ----- -----
-  950   139 Total
+  955   143 Total
 
 Page ROM  %  RAM    Vol Diff  Functions:
 ---- --- --- ---    --- ----  ----------
 0     20   4    1             @delay_ms1
 0     31   6    3    322  6.3  is_on_bssa
-0     53  10    3    519  6.3  wait1234sec
+0     65  12    5    703  6.6  wait1234sec
 0     23   4    0    129  1.3  tray_to_on
  Inline         2    216  3.3  led_flash
 0    128  24    2    649  7.0  refresh_read_button
  Inline         3             @DIV88
-0    269  51    2   2258  7.6  MAIN
+0    269  50    2   2258  7.6  MAIN
  Inline         0             @cinit1
 
 Program metrics:
     Functions               6
-    Statements              139
+    Statements              143
     Comments                184
-    Volume (V)              5496
-    Difficulty (D)          31.8
-    Effort to implement (E) 174872
-    Time to implement (T)   2 hours, 42 minutes
+    Volume (V)              5752
+    Difficulty (D)          32.1
+    Effort to implement (E) 184404
+    Time to implement (T)   2 hours, 51 minutes
     Est Delivered Bugs (B)  1
-    Cyclomatic Complexity   33
-    Maintainability (MI)    121
+    Cyclomatic Complexity   35
+    Maintainability (MI)    120
 
  Segment     Used  Free
 -----------  ----  ----
 00000-00003     4  0  
-00004-007FF   524  1520  
+00004-007FF   536  1508  
 
 
 

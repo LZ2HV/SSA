@@ -81,13 +81,14 @@ int read_sec = 0;
 BOOLEAN wait1234sec(void)
 {
     BOOLEAN res = true;
+    int try = 0;
     int count_except = 0;
     for (int i=0; i<read_sec; ++i)
     {
         if (is_on_bssa())//full=0+200=200ms
         {
             count_except++;
-            if (count_except > 8)//except=(0+120=120)*9=1080ms
+            if (count_except > 10)//except=(0+120=120)*11=1320ms
             {
                 res = false;
                 break;
@@ -97,9 +98,13 @@ BOOLEAN wait1234sec(void)
         if (count_except > 0) output_high(DEB_EXC_SAV_MIN);//fast low Volts -> save_ssa > 0
         else output_low(DEB_EXC_SAV_MIN);
     }
-    if (res && count_except > 5)//except=(0+120=120)*6=720ms+120=840ms
+    if (res && count_except > 5)//except=120*6=720ms
     {
-        if (is_on_bssa()) res = false;
+        for (int i=0; i<3; ++i)//try 3 times (120*3=360mms)+720=1080ms
+        {
+            if (is_on_bssa()) try++;
+            if (try>2) res = false; 
+        }
     }
     output_low(DEB_EXC_SAV_MIN);
     return res;
@@ -264,12 +269,12 @@ void main(void)
         if (save_ssa > 0) save_ssa++;
 #if defined DEBUG_MAINN
         if (save_ssa > 0 || c_tray_on > 0) f_main = 1;
-        if (f_main < 1 || save_ssa > 0 ||  c_tray_on > 17) output_high(DEB_EXC_SAV_MIN);//exception=17->c_tray_on > 16
+        if (f_main < 1 || save_ssa > 0 ||  c_tray_on > 19) output_high(DEB_EXC_SAV_MIN);//exception=17->c_tray_on > 16
         else output_low(DEB_EXC_SAV_MIN);
         if (f_main > 9) f_main = 0;
         else f_main++;
 #else
-        if (save_ssa > 0 || c_tray_on > 17) output_high(DEB_EXC_SAV_MIN);//exception=17->c_tray_on > 16
+        if (save_ssa > 0 || c_tray_on > 19) output_high(DEB_EXC_SAV_MIN);//exception=17->c_tray_on > 16
         else output_low(DEB_EXC_SAV_MIN);
 #endif
         if (c_tray_on > 0)
@@ -282,11 +287,11 @@ void main(void)
                 output_low(DEB_EXC_SAV_MIN);
 #endif
             }
-            if (c_tray_on > 0 && c_tray_on < 18) //else if (c_tray_on<17)
+            if (c_tray_on > 0 && c_tray_on < 20)
             {
-                if (c_tray_on==8 ) tray_to_on();//(8*250ms=2000ms)=8
-                if (c_tray_on==13) tray_to_on();//8+(4*250ms=1000ms)=12+1 
-                c_tray_on++;//13+(4*250ms=1000ms)=17 ++ to 18max
+                if (c_tray_on==9 ) tray_to_on();//(9*250ms=2250ms)=9
+                if (c_tray_on==14) tray_to_on();//9+(5*250ms=1250ms)=14
+                c_tray_on++;//14+(5*250ms=1250ms)=19 ++ to 20max
             }
         }   
     }

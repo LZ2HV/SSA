@@ -1,9 +1,9 @@
-D G "__PCM__" 0 295 ""5.115""
-D G "__DEVICE__" 0 295 "683"
-D G "__DATE__" 0 295 ""22-Jun-26""
-D G "__TIME__" 0 295 ""10:19:08""
-D G "_UNICODE" 0 295 ""?""
-D G "__EVAL" 0 295 ""?"" "* mssa.c"
+D G "__PCM__" 0 300 ""5.115""
+D G "__DEVICE__" 0 300 "683"
+D G "__DATE__" 0 300 ""22-Jun-26""
+D G "__TIME__" 0 300 ""14:56:04""
+D G "_UNICODE" 0 300 ""?""
+D G "__EVAL" 0 300 ""?"" "* mssa.c"
 C G "" 0 1 1 "*"
 C G "" 0 1 1 "*"
 C G "" 0 1 1 "*"
@@ -1085,42 +1085,44 @@ V G "read_sec" 0 80 "int8" `633
 F N "wait1234sec" 0 81 ""
 F G "wait1234sec" 0 82 "int8()" `634 
 V L "res" 0 83 "int1" `635 
-V L "count_except" 0 84 "int8" `636 
-V L "i" 0 85 "int8" `637 
+V L "try" 0 84 "int8" `636 
+V L "count_except" 0 85 "int8" `637 
+V L "i" 0 86 "int8" `638 
 C L "wait1234sec" 0 25 1 "FUNCTION"
 C L "wait1234sec" 0 25 1 "FUNCTION"
 C L "wait1234sec" 0 25 1 "FUNCTION"
 C L "wait1234sec" 0 25 1 "FUNCTION"
-F N "tray_to_on" 0 107 ""
-F G "tray_to_on" 0 108 "void()" `638 
-F N "led_flash" 0 116 ""
-V L "z" 0 116 "int8" `640 
-F G "led_flash" 0 117 "void(int8 z)" `639 
-V L "i" 0 118 "int8" `641 
-V G "read_ssa" 0 128 "int8" `642 
-V G "save_ssa" 0 129 "int8" `643 
-V G "f_main" 0 131 "int8" `644 
-V G "f_b_sec" 0 133 "int1" `645 
+V L "i" 0 103 "int8" `639 
+C L "wait1234sec" 0 25 1 "FUNCTION"
+F N "tray_to_on" 0 112 ""
+F G "tray_to_on" 0 113 "void()" `640 
+F N "led_flash" 0 121 ""
+V L "z" 0 121 "int8" `642 
+F G "led_flash" 0 122 "void(int8 z)" `641 
+V L "i" 0 123 "int8" `643 
+V G "read_ssa" 0 133 "int8" `644 
+V G "save_ssa" 0 134 "int8" `645 
+V G "f_main" 0 136 "int8" `646 
+V G "f_b_sec" 0 138 "int1" `647 
 C L "refresh_read_button" 0 25 1 "FUNCTION"
-F N "refresh_read_button" 0 134 ""
-F G "refresh_read_button" 0 135 "void()" `646 
-V L "tread_ssa" 0 136 "int8" `647 
-V L "cflash" 0 161 "int8" `648 
-F N "MAIN" 0 174 ""
-F G "MAIN" 0 175 "void()" `652  "Initialization *"
+F N "refresh_read_button" 0 139 ""
+F G "refresh_read_button" 0 140 "void()" `648 
+V L "tread_ssa" 0 141 "int8" `649 
+V L "cflash" 0 166 "int8" `650 
+F N "MAIN" 0 179 ""
+F G "MAIN" 0 180 "void()" `654  "Initialization *"
 C L "MAIN" 0 25 1 "FUNCTION"
 C L "MAIN" 0 25 1 "FUNCTION"
 C L "MAIN" 0 25 1 "FUNCTION"
 C L "MAIN" 0 25 1 "FUNCTION"
 C L "MAIN" 0 25 3 "FUNCTION"
 C L "MAIN" 0 25 1 "FUNCTION"
-V L "c_tray_on" 0 211 "int8" `655 
-V L "c_ss" 0 212 "int8" `656 
+V L "c_tray_on" 0 216 "int8" `657 
+V L "c_ss" 0 217 "int8" `658 
 C L "MAIN" 0 25 1 "FUNCTION"
 C L "MAIN" 0 25 1 "FUNCTION"
 C L "MAIN" 0 25 1 "FUNCTION"
 C L "MAIN" 0 25 5 "FUNCTION"
-C L "MAIN" 0 25 1 "FUNCTION"
 C L "MAIN" 0 25 1 "FUNCTION"
 C L "MAIN" 0 25 1 "FUNCTION"
 C L "MAIN" 0 25 1 "FUNCTION"
