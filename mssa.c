@@ -64,16 +64,16 @@ BOOLEAN is_on_bssa(void)
 {
     BOOLEAN res = false;
     int c_bssa = 0;
-    for (int i=0; i<80; ++i)//160ms
+    for (int i=0; i<20; ++i)//200ms
     {
-        if (!input(SSA_BUT)) c_bssa++; 
+        if (!input(SSA_BUT)) c_bssa++;
         else c_bssa = 0;
-        if (c_bssa > 40)//80ms
+        if (c_bssa > 12)//120ms
         {
             res = true;
             break;
         }
-        delay_ms(2);
+        delay_ms(10);
     }
     return res;
 }
@@ -84,11 +84,10 @@ BOOLEAN wait1234sec(void)
     int count_except = 0;
     for (int i=0; i<read_sec; ++i)
     {
-        delay_ms(40);
-        if (is_on_bssa())//full=160+40=200ms
+        if (is_on_bssa())//full=0+200=200ms
         {
             count_except++;
-            if (count_except > 2)//except=(40+80=120)*3=360ms
+            if (count_except > 8)//except=(0+120=120)*9=1080ms
             {
                 res = false;
                 break;
@@ -98,7 +97,7 @@ BOOLEAN wait1234sec(void)
         if (count_except > 0) output_high(DEB_EXC_SAV_MIN);//fast low Volts -> save_ssa > 0
         else output_low(DEB_EXC_SAV_MIN);
     }
-    if (res && count_except > 0)
+    if (res && count_except > 5)//except=(0+120=120)*6=720ms+120=840ms
     {
         if (is_on_bssa()) res = false;
     }
@@ -143,6 +142,7 @@ void refresh_read_button(void)
         delay_ms(100);
     } 
     delay_ms(10);
+    if (save_ssa>0) return;
     if (!input(BUT_SEC))
     {
         f_b_sec = true;
@@ -241,13 +241,13 @@ void main(void)
         {
            h=true; output_high(DEB_EXE);
         }*/
-        delay_ms(90);//90+160=250ms
-        if (c_tray_on==0) refresh_read_button();//80 or 160
+        delay_ms(50);//50+200=250ms
+        if (c_tray_on==0) refresh_read_button();//120 or 200
         c_ss = COU_SAVE_SECL;
         if (read_ssa==3)
         {
             c_ss = COU_SAVE_SECH; 
-            if (c_tray_on==0) delay_ms(80);//90+80+80=250ms
+            if (c_tray_on==0) delay_ms(80);//50+120+80=250ms
         }
         if (save_ssa > c_ss)
         {
@@ -279,6 +279,7 @@ void main(void)
                 c_tray_on=0;
 #if defined DEBUG_MAINN
                 f_main=0;
+                output_low(DEB_EXC_SAV_MIN);
 #endif
             }
             if (c_tray_on > 0 && c_tray_on < 18) //else if (c_tray_on<17)
@@ -287,12 +288,6 @@ void main(void)
                 if (c_tray_on==13) tray_to_on();//8+(4*250ms=1000ms)=12+1 
                 c_tray_on++;//13+(4*250ms=1000ms)=17 ++ to 18max
             }
-            /*if (c_tray_on > 0 && c_tray_on<18) //else if (c_tray_on<17)
-            {
-                if (c_tray_on==8 ) tray_to_on();//(8*250ms=2000ms)=8
-                if (c_tray_on==12) tray_to_on();//8+(4*250ms=1000ms)=12+1 
-                c_tray_on++;//13+(4*250ms=1000ms)=17 ++ to 18max
-            }*/
         }   
     }
 }
