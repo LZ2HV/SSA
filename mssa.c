@@ -51,6 +51,11 @@
 #define MIN_SEC 10 //10=10*200=2s
 #define DEF_SEC 30 //30=30*200=6s
 
+//#define MAX_ESEC 14 //120*15=1800ms
+// MID=12             //120*13=1560ms
+//#define MIN_ESEC 10 //120*11=1320ms
+#define COU_ESEC 10 //= 10 or 12 or 14
+
 #if defined PIC12F683X
 #define BUT_SEC         (PIN_A2)
 #define SSA_BUT         (PIN_A0)
@@ -80,30 +85,35 @@ BOOLEAN is_on_bssa(void)
 int read_sec = 0;
 BOOLEAN wait1234sec(void)
 {
-    BOOLEAN res = true;
-    int try = 0;
+    BOOLEAN res = true; //int try = 0;
+    int to = 0;
     int count_except = 0;
     for (int i=0; i<read_sec; ++i)
     {
-        if (is_on_bssa())//full=0+200=200ms
+        if (is_on_bssa())//full=200+0=200ms
         {
             count_except++;
-            if (count_except > 10)//except=(0+120=120)*11=1320ms
+            if (count_except > COU_ESEC)//except=(0+120=120)*11=1320ms //120*15=1800ms
             {
                 res = false;
                 break;
             }
         }
         else count_except = 0;
-        if (count_except > 0) output_high(DEB_EXC_SAV_MIN);//fast low Volts -> save_ssa > 0
+        if (count_except > 0) output_high(DEB_EXC_SAV_MIN);
         else output_low(DEB_EXC_SAV_MIN);
     }
-    if (res && count_except > 5)//except=120*6=720ms
+    if (res && count_except > 0)
     {
-        for (int i=0; i<3; ++i)//try 3 times (120*3=360mms)+720=1080ms
+        res = false;
+        to = (COU_ESEC+1)-count_except;
+        for (int i=0; i<to; ++i)//try times to 1320-120=1200ms
         {
-            if (is_on_bssa()) try++;
-            if (try>2) res = false; 
+            if (!is_on_bssa()) 
+            {
+               res = true;
+               break;
+            }
         }
     }
     output_low(DEB_EXC_SAV_MIN);
