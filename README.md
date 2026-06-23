@@ -28,11 +28,11 @@ Schematics and boards is in directory "sch", thers have three variants, two with
 
 Important:
 If you are not tech savvy, do not attempt this.
+SMD variant: Gerber file sch/smd/mssaPIC12smd_2026-06-16.zip<br/>
 1. All zero resistors are not placed at the beginning (R9, R13, R14).
 2. Resistor R9 are placed after successfully programming.  
 3. If Button Start-Stop work with GND (T-Cross) Add R14, Remove R10 and R13.
 4. If Button Start-Stop work with Plus (some Skoda models) Add R13, Remove R14.<br/>
-SMD variant: Gerber file sch/smd/mssaPIC12smd_2026-06-16.zip<br/>
 ![Top](https://github.com/LZ2HV/SSA/blob/5163504e4d249dbd926a3ff0e3a01d93f237d9e3/pic/top_pic.png)
 ![Bottom](https://github.com/LZ2HV/SSA/blob/ab58418ad07e1950e381db28720cb779d567b959/pic/bottom_pic.png)<br/>
 ![Sch](https://github.com/LZ2HV/SSA/blob/d15fbafb7d327980c333e8f883bb0fbb9c20ada8/pic/Sch.png)<br/>
