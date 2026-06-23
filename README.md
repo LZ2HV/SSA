@@ -27,7 +27,7 @@ Schematics and boards is in directory "sch", thers have three variants, two with
  in down pictures is presented variant with SMD elements (directory sch/smd). 
 
 <strong>Important: If you are not tech savvy, do not attempt this.</strong><br/><br/>
-SMD variant: Gerber file sch/smd/mssaPIC12smd_2026-06-16.zip
+<strong>SMD variant: Gerber file sch/smd/mssaPIC12smd_2026-06-16.zip</strong>
 1. All zero resistors are not placed at the beginning (R9, R13, R14).
 2. Resistor R9 are placed after successfully programming.  
 3. If Button Start-Stop work with GND (T-Cross) Add R14, Remove R10 and R13.
@@ -42,6 +42,6 @@ SMD variant: Gerber file sch/smd/mssaPIC12smd_2026-06-16.zip
 <strong>DIP PIC16 variant: Gerber file sch/mssaPIC16_2026-06-18.zip, This variant work only with GND.</strong><br/>
 ![Top](https://github.com/LZ2HV/SSA/blob/b3624d15f0a9bdb992976c37291aef9ca946b0ae/pic/top16dip.png)
 ![Bottom](https://github.com/LZ2HV/SSA/blob/b3624d15f0a9bdb992976c37291aef9ca946b0ae/pic/bot16dip.png)<br/>
-![Sch](https://github.com/LZ2HV/SSA/blob/7a2ee1edfffc32abe9e8e6a552045779106d7128/pic/sch16.png)<br/>---<br/>
+![Sch](https://github.com/LZ2HV/SSA/blob/7a2ee1edfffc32abe9e8e6a552045779106d7128/pic/sch16.png)<br/>
 <strong>Prototype: In My VW T-Cross 2025</strong><br/>
 ![Sch](https://github.com/LZ2HV/SSA/blob/aa41d21a928631c7bed4fb28985d4fc1029c4b20/pic/prototype.jpg)
