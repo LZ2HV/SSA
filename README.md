@@ -26,7 +26,7 @@ next bush of the button, will be change to 8sec, module LED, will be flashing 8 
 Schematics and boards is in directory "sch", thers have three variants, two with DIP socket one with SMD elements,
  in down pictures is presented variant with SMD elements (directory sch/smd). 
 
-<font color="red"><strong>Important: If you are not tech savvy, do not attempt this.</strong></font><br/><br/>
+<font color="red">Important: If you are not tech savvy, do not attempt this.</font><br/><br/>
 <strong>SMD variant: Gerber file sch/smd/mssaPIC12smd_2026-06-16.zip</strong>
 1. All zero resistors are not placed at the beginning (R9, R13, R14).
 2. Resistor R9 are placed after successfully programming.  
