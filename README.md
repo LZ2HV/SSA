@@ -27,7 +27,7 @@ Schematics and boards is in directory "sch", thers have three variants, two with
  in down pictures is presented variant with SMD elements (directory sch/smd). 
 
 Important:
-If you are not tech savvy, do not attempt this.<br/>
+If you are not tech savvy, do not attempt this.<br/><br/>
 SMD variant: Gerber file sch/smd/mssaPIC12smd_2026-06-16.zip
 1. All zero resistors are not placed at the beginning (R9, R13, R14).
 2. Resistor R9 are placed after successfully programming.  
@@ -35,7 +35,7 @@ SMD variant: Gerber file sch/smd/mssaPIC12smd_2026-06-16.zip
 4. If Button Start-Stop work with Plus (some Skoda models) Add R13, Remove R14.<br/>
 ![Top](https://github.com/LZ2HV/SSA/blob/5163504e4d249dbd926a3ff0e3a01d93f237d9e3/pic/top_pic.png)
 ![Bottom](https://github.com/LZ2HV/SSA/blob/ab58418ad07e1950e381db28720cb779d567b959/pic/bottom_pic.png)<br/>
-![Sch](https://github.com/LZ2HV/SSA/blob/d15fbafb7d327980c333e8f883bb0fbb9c20ada8/pic/Sch.png)<br/>
+![Sch](https://github.com/LZ2HV/SSA/blob/d15fbafb7d327980c333e8f883bb0fbb9c20ada8/pic/Sch.png)
 DIP PIC12 variant: Gerber file sch/mssaPIC12_2026-06-18.zip
 1. This variant work only with GND.
 ![Top](https://github.com/LZ2HV/SSA/blob/b3624d15f0a9bdb992976c37291aef9ca946b0ae/pic/top12dip.png)
