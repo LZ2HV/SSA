@@ -8920,6 +8920,7 @@ Source: www.kingbright.com</description>
 <sheet>
 <plain>
 <text x="25.4" y="109.22" size="3.81" layer="91">LZ2HV T-Cross</text>
+<text x="78.74" y="27.94" size="1.778" layer="91">or PIC16F684</text>
 </plain>
 <instances>
 <instance part="C1" gate="G$1" x="53.34" y="93.98" smashed="yes">
