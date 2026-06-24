@@ -34,14 +34,15 @@ Schematics and boards is in directory "sch", thers have three variants, two with
 4. If Button Start-Stop work with Plus (some Skoda models) Add R13, Remove R14.<br/>
 ![Top](https://github.com/LZ2HV/SSA/blob/5163504e4d249dbd926a3ff0e3a01d93f237d9e3/pic/top_pic.png)
 ![Bottom](https://github.com/LZ2HV/SSA/blob/ab58418ad07e1950e381db28720cb779d567b959/pic/bottom_pic.png)<br/>
-![Sch](https://github.com/LZ2HV/SSA/blob/d15fbafb7d327980c333e8f883bb0fbb9c20ada8/pic/Sch.png)<br/>
+![Sch](https://github.com/LZ2HV/SSA/blob/d15fbafb7d327980c333e8f883bb0fbb9c20ada8/pic/Sch.png)
+
 <strong>DIP PIC12 variant: Gerber file sch/mssaPIC12_2026-06-18.zip, This variant work only for Button with GND.</strong><br/>
 ![Top](https://github.com/LZ2HV/SSA/blob/b3624d15f0a9bdb992976c37291aef9ca946b0ae/pic/top12dip.png)
 ![Bottom](https://github.com/LZ2HV/SSA/blob/b3624d15f0a9bdb992976c37291aef9ca946b0ae/pic/bott12dip.png)<br/>
-![Sch](https://github.com/LZ2HV/SSA/blob/7a2ee1edfffc32abe9e8e6a552045779106d7128/pic/sch12.png)<br/>
+![Sch](https://github.com/LZ2HV/SSA/blob/8541a3604b91e00235cbf7c9044d966601967819/pic/sch12.png)<br/>
 <strong>DIP PIC16 variant: Gerber file sch/mssaPIC16_2026-06-18.zip, This variant work only for Button with GND.</strong><br/>
 ![Top](https://github.com/LZ2HV/SSA/blob/b3624d15f0a9bdb992976c37291aef9ca946b0ae/pic/top16dip.png)
 ![Bottom](https://github.com/LZ2HV/SSA/blob/b3624d15f0a9bdb992976c37291aef9ca946b0ae/pic/bot16dip.png)<br/>
-![Sch](https://github.com/LZ2HV/SSA/blob/7a2ee1edfffc32abe9e8e6a552045779106d7128/pic/sch16.png)<br/>
+![Sch](https://github.com/LZ2HV/SSA/blob/8541a3604b91e00235cbf7c9044d966601967819/pic/sch16.png)<br/>
 <strong>Prototype: In My VW T-Cross 2025</strong><br/>
 ![Sch](https://github.com/LZ2HV/SSA/blob/aa41d21a928631c7bed4fb28985d4fc1029c4b20/pic/prototype.jpg)
