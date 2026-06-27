@@ -18,7 +18,7 @@
       ³  ÀÄ@delay_ms1  0/20  Ram=1
       ÃÄ@delay_ms1  0/20  Ram=1
       ÃÄ@delay_ms1  0/20  Ram=1
-      ÃÄrefresh_read_button  0/128  Ram=2
+      ÃÄrefresh_read_button  0/125  Ram=2
       ³  ÃÄis_on_bssa  0/31  Ram=3
       ³  ³  ÀÄ*
       ³  ÃÄ@delay_ms1  0/20  Ram=1

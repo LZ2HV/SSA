@@ -40,25 +40,25 @@ ROM Allocation:
 000037  wait1234sec
 000079  tray_to_on
 000090  refresh_read_button
-0000D9  @DIV88
-0000F1  led_flash
-000110  @cinit1
-000110  MAIN
-000126  @cinit2
+0000D6  @DIV88
+0000EE  led_flash
+00010D  @cinit1
+00010D  MAIN
+000123  @cinit2
 
 Project Directory:
-    D:\Install\VW\Manuals\T-cross_2024_bf3\MemSSA\MemSSA_16f684_030_2026\
+    F:\CD_001\VW\T-cross_2024_bf3\MemSSA\MemSSA_16f684_030_2026\
 
 Project Files:
-    mssa.c                                                  [23-ώνθ-26 13:45  CRC=65D4C8D6]
-    ..\..\..\..\..\..\PICC_5115\Devices\16f684.h            [07-μΰπ-23 19:18  CRC=80E9E0D1]
+    mssa.c                                                  [27-ώνθ-26 14:13  CRC=3FF1DFBB]
+    D:\PICC_5_115\Devices\16f684.h                          [07-μΰπ-23 20:18  CRC=80E9E0D1]
 
-Source signature=67A88A78
+Source signature=41C5A15D
 Program memory checksum=0000
-Hex file CRC=90B8
+Hex file CRC=F30A
 
 Units:
-    D:\Install\VW\Manuals\T-cross_2024_bf3\MemSSA\MemSSA_16f684_030_2026\mssa (main)
+    F:\CD_001\VW\T-cross_2024_bf3\MemSSA\MemSSA_16f684_030_2026\mssa (main)
 
 Compiler Settings:
     Processor:      PIC16F684

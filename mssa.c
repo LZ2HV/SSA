@@ -48,19 +48,21 @@
 #define A05_MMM         (PIN_A5)
 #endif
 
-//#define COU_SAVE_SECL 16  //17*150+17*100=2550+1700=4250s
+#define COU_SAVE_SECL 16  //17*150+17*100=2550+1700=4250s
 #define COU_SAVE_SECH 2   //3=750 4*170+4*80=680+320=1000  8*158+8*92=1264+736=2000s
-#define MAX_SSEC 24 //24=6s
+/*#define MAX_SSEC 24 //24=6s
 #define MIN_SSEC 4  //4=1s
-#define DEF_SSEC 16 //16=4s
+#define DEF_SSEC 16 //16=4s*/
 
 #define MAX_SEC 40 //40=40*200=8s
 #define MIN_SEC 10 //10=10*200=2s
 #define DEF_SEC 30 //30=30*200=6s
-
+/*
 #define MAX_ESEC 14 //120*15=1800ms = 3-flashing
 // MID=12           //120*13=1560ms = 2-flashing
 #define MIN_ESEC 10 //120*11=1320ms = 1-flashing
+#define DEF_ESEC 10
+*/
 #define DEF_ESEC 10
 
 #define TRY_002 9           //(9*250=2250ms)=9
@@ -94,7 +96,7 @@ BOOLEAN is_on_bssa(void)
     return res;
 }
 int read_sec = 0;
-int exce_sec = 0;
+//int exce_sec = 0;
 BOOLEAN wait1234sec(void)
 {
     BOOLEAN res = true; //int try = 0;
@@ -105,7 +107,7 @@ BOOLEAN wait1234sec(void)
         if (is_on_bssa())//full=200+0=200ms
         {
             count_except++;
-            if (count_except > exce_sec)//except=(0+120=120)*11=1320ms //120*15=1800ms
+            if (count_except > DEF_ESEC)//except=(0+120=120)*11=1320ms //120*15=1800ms
             {
                 res = false;
                 break;
@@ -118,7 +120,7 @@ BOOLEAN wait1234sec(void)
     if (res && count_except > 0)
     {
         res = false;
-        to = (exce_sec+1)-count_except;
+        to = (DEF_ESEC+1)-count_except;
         for (int i=0; i<to; ++i)//try times to 1320ms
         {
             if (!is_on_bssa()) 
@@ -140,15 +142,14 @@ void tray_to_on(void)
     output_low(SWI_OUT);
     output_low(DEB_EXC_SAV_MIN);
 }
-void led_flash(int z,BOOLEAN l)
+void led_flash(int z)
 {
     for (int i=0; i<z; ++i)
     {
         output_low(DEB_EXC_SAV_MIN);
         delay_ms(200);
         output_high(DEB_EXC_SAV_MIN);
-        if (l) delay_ms(800);
-        else delay_ms(200);
+        delay_ms(200);
     }
     output_low(DEB_EXC_SAV_MIN);
     delay_ms(200);
@@ -158,9 +159,7 @@ int save_ssa = 0;
 #if defined DEBUG_MAINN
 int f_main = 0;
 #endif
-int set_parm = 0;
-int c_parm = 0;
-int save_secl = 0;
+BOOLEAN f_b_sec = false;//button is up logic
 void refresh_read_button(void)
 {
     int tread_ssa = 2;
@@ -170,80 +169,33 @@ void refresh_read_button(void)
         save_ssa=1;
         read_ssa = tread_ssa;
         delay_ms(100);
-    }
+    } 
     delay_ms(10);
-    if (save_ssa>0) 
-    {
-        set_parm=0;
-        c_parm=0;
-        return;
-    }
     if (!input(BUT_SEC))
     {
-        if (set_parm==0) set_parm=1;
-        c_parm=0;
-#if defined DEBUG_MAINN
-        output_low(DEB_EXC_SAV_MIN);
+        f_b_sec = true;
+#if defined DEBUG_MAINN        
         f_main = 1;
-#endif
-        if (set_parm==2)
+#endif        
+    }
+    else
+    {
+        if (f_b_sec)
         {
+            f_b_sec = false;
             if (read_sec>=MAX_SEC) read_sec = MIN_SEC;
             else read_sec += 5;
             write_eeprom(1,read_sec);
             int cflash = read_sec/5;
-            led_flash(cflash,false);
-        }
-        if (set_parm==3)
-        {
-            if (save_secl>=MAX_SSEC) save_secl = MIN_SSEC;
-            else save_secl += 4;
-            write_eeprom(2,save_secl);
-            int cflash = save_secl/4;
-            led_flash(cflash,false);
-        }
-        if (set_parm==4)
-        {
-            if (exce_sec>=MAX_ESEC) exce_sec = MIN_ESEC;
-            else exce_sec += 2;
-            write_eeprom(3,exce_sec);
-            int cflash = ((exce_sec/2)-4);
-            led_flash(cflash,false);
-        }
-    }
-    else if (set_parm>0)
-    {
-        if (set_parm==1)
-        {
-            set_parm = 2;
-            c_parm=0;
-            led_flash(1,true);
-        }
-        else if (set_parm>0) c_parm++;
-        if (c_parm>5)
-        {
-            c_parm=0;
+            led_flash(cflash);
 #if defined DEBUG_MAINN
             f_main = 1;
-#endif            
-            if (set_parm==2)
-            {
-                led_flash(1,true);
-                set_parm=3;
-            }
-            else if (set_parm==3)
-            {
-                led_flash(1,true);
-                set_parm=4;
-            }            
-            else if (set_parm==4)
-            {
-                led_flash(1,true);
-                set_parm=0;
-#if defined DEBUG_MAINN
-                f_main = 0;
-#endif                 
-            }           
+#endif        
+#if defined DEBUG_WRITE
+            output_high(DEB_WRI);
+            delay_ms(200);
+            output_low(DEB_WRI);
+#endif
         }
     }
 }
@@ -287,23 +239,7 @@ void main(void)
         write_eeprom(1,DEF_SEC);//20=1s 40=2s 60=3s 80=4s 100=5s 120=6s
         delay_ms(50);
         read_sec = DEF_SEC;
-    }
-    save_secl = read_eeprom(2);
-    delay_ms(20);
-    if (save_secl<MIN_SSEC || save_secl>MAX_SSEC)
-    {
-        write_eeprom(2,DEF_SSEC);
-        delay_ms(50);
-        save_secl = DEF_SSEC;
-    }
-    exce_sec = read_eeprom(3);
-    delay_ms(20);
-    if (exce_sec<MIN_ESEC || exce_sec>MAX_ESEC)
-    {
-        write_eeprom(3,DEF_ESEC);
-        delay_ms(50);
-        exce_sec = DEF_ESEC;
-    }    
+    }      
     int c_tray_on = 0;
     int c_ss = 0;
     if (read_ssa == 3)
@@ -339,7 +275,7 @@ void main(void)
         }*/
         delay_ms(50);//50+200=250ms
         if (c_tray_on==0) refresh_read_button();//120 or 200
-        c_ss = (save_secl-1);
+        c_ss = COU_SAVE_SECL;
         if (read_ssa==3)
         {
             c_ss = COU_SAVE_SECH;

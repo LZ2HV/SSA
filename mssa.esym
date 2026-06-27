@@ -1,9 +1,9 @@
-D G "__PCM__" 0 310 ""5.115""
-D G "__DEVICE__" 0 310 "683"
-D G "__DATE__" 0 310 ""23-Jun-26""
-D G "__TIME__" 0 310 ""13:45:12""
-D G "_UNICODE" 0 310 ""?""
-D G "__EVAL" 0 310 ""?"" "* mssa.c"
+D G "__PCM__" 0 327 ""5.115""
+D G "__DEVICE__" 0 327 "683"
+D G "__DATE__" 0 327 ""27-Jun-26""
+D G "__TIME__" 0 327 ""14:13:45""
+D G "_UNICODE" 0 327 ""?""
+D G "__EVAL" 0 327 ""?"" "* mssa.c"
 C G "" 0 1 1 "*"
 C G "" 0 1 1 "*"
 C G "" 0 1 1 "*"
@@ -1062,63 +1062,67 @@ D G "INT_RA2" 1 650 "0x0040B08"
 D G "INT_RA3" 1 651 "0x0080B08"
 D G "INT_RA4" 1 652 "0x0100B08"
 D G "INT_RA5" 1 653 "0x0200B08"
-D G "BUT_SEC" 0 39 " (PIN_A4)"
-D G "SSA_BUT" 0 40 " (PIN_A1)"
-D G "SWI_OUT" 0 41 " (PIN_C0)"
-D G "DEB_WRI" 0 42 " (PIN_C4)"
-D G "DEB_EXE" 0 43 " (PIN_C3)"
-D G "DEB_EXC_SAV_MIN" 0 44 " (PIN_C2)"
-D G "A05_MMM" 0 45 " (PIN_A5)"
-D G "COU_SAVE_SECL" 0 48 "16" "17*150+17*100=2550+1700=4250s"
-D G "COU_SAVE_SECH" 0 49 "2" "3=750 4*170+4*80=680+320=1000  8*158+8*92=1264+736=2000s"
-D G "MAX_SEC" 0 50 "40" "40=40*200=8s"
-D G "MIN_SEC" 0 51 "10" "10=10*200=2s"
-D G "DEF_SEC" 0 52 "30" "30=30*200=6s"
-D G "COU_ESEC" 0 57 "10" "= 10 or 12 or 14"
-F N "is_on_bssa" 0 68 ""
-F G "is_on_bssa" 0 69 "int8()" `629 
-V L "res" 0 70 "int1" `630 
-V L "c_bssa" 0 71 "int8" `631 
-V L "i" 0 72 "int8" `632 
+D G "BUT_SEC" 0 42 " (PIN_A4)"
+D G "SSA_BUT" 0 43 " (PIN_A1)"
+D G "SWI_OUT" 0 44 " (PIN_C0)"
+D G "DEB_WRI" 0 45 " (PIN_C4)"
+D G "DEB_EXE" 0 46 " (PIN_C3)"
+D G "DEB_EXC_SAV_MIN" 0 47 " (PIN_C2)"
+D G "A05_MMM" 0 48 " (PIN_A5)"
+D G "COU_SAVE_SECL" 0 51 "16" "17*150+17*100=2550+1700=4250s"
+D G "COU_SAVE_SECH" 0 52 "2" "3=750 4*170+4*80=680+320=1000  8*158+8*92=1264+736=2000s"
+D G "MAX_SEC" 0 57 "40" "40=40*200=8s"
+D G "MIN_SEC" 0 58 "10" "10=10*200=2s"
+D G "DEF_SEC" 0 59 "30" "30=30*200=6s"
+D G "DEF_ESEC" 0 66 "10"
+D G "TRY_002" 0 68 "9" "(9*250=2250ms)=9"
+D G "TRY_003" 0 69 " (TRY_002+5)" "9+(5*250ms=1250ms)=14"
+D G "TRY_END" 0 70 " (TRY_003+5)" "14+(5*250ms=1250ms)=19"
+F N "is_on_bssa" 0 81 ""
+F G "is_on_bssa" 0 82 "int8()" `629 
+V L "res" 0 83 "int1" `630 
+V L "c_bssa" 0 84 "int8" `631 
+V L "i" 0 85 "int8" `632 
 C L "is_on_bssa" 0 25 1 "FUNCTION"
 C L "is_on_bssa" 0 25 1 "FUNCTION"
-V G "read_sec" 0 85 "int8" `633 
-F N "wait1234sec" 0 86 ""
-F G "wait1234sec" 0 87 "int8()" `634 
-V L "res" 0 88 "int1" `635 
+V G "read_sec" 0 98 "int8" `633 
 C L "wait1234sec" 0 25 1 "FUNCTION"
-V L "to" 0 89 "int8" `636 
-V L "count_except" 0 90 "int8" `637 
-V L "i" 0 91 "int8" `638 
+F N "wait1234sec" 0 100 ""
+F G "wait1234sec" 0 101 "int8()" `634 
+V L "res" 0 102 "int1" `635 
+C L "wait1234sec" 0 25 1 "FUNCTION"
+V L "to" 0 103 "int8" `636 
+V L "count_except" 0 104 "int8" `637 
+V L "i" 0 105 "int8" `638 
 C L "wait1234sec" 0 25 1 "FUNCTION"
 C L "wait1234sec" 0 25 1 "FUNCTION"
-V L "i" 0 110 "int8" `639 
+V L "i" 0 124 "int8" `639 
 C L "wait1234sec" 0 25 1 "FUNCTION"
-F N "tray_to_on" 0 122 ""
-F G "tray_to_on" 0 123 "void()" `640 
-F N "led_flash" 0 131 ""
-V L "z" 0 131 "int8" `642 
-F G "led_flash" 0 132 "void(int8 z)" `641 
-V L "i" 0 133 "int8" `643 
-V G "read_ssa" 0 143 "int8" `644 
-V G "save_ssa" 0 144 "int8" `645 
-V G "f_main" 0 146 "int8" `646 
-V G "f_b_sec" 0 148 "int1" `647 
+F N "tray_to_on" 0 136 ""
+F G "tray_to_on" 0 137 "void()" `640 
+F N "led_flash" 0 145 ""
+V L "z" 0 145 "int8" `642 
+F G "led_flash" 0 146 "void(int8 z)" `641 
+V L "i" 0 147 "int8" `643 
+V G "read_ssa" 0 157 "int8" `644 
+V G "save_ssa" 0 158 "int8" `645 
+V G "f_main" 0 160 "int8" `646 
+V G "f_b_sec" 0 162 "int1" `647 
 C L "refresh_read_button" 0 25 1 "FUNCTION"
-F N "refresh_read_button" 0 149 ""
-F G "refresh_read_button" 0 150 "void()" `648 
-V L "tread_ssa" 0 151 "int8" `649 
-V L "cflash" 0 176 "int8" `650 
-F N "MAIN" 0 189 ""
-F G "MAIN" 0 190 "void()" `654  "Initialization *"
+F N "refresh_read_button" 0 163 ""
+F G "refresh_read_button" 0 164 "void()" `648 
+V L "tread_ssa" 0 165 "int8" `649 
+V L "cflash" 0 189 "int8" `650 
+F N "MAIN" 0 202 ""
+F G "MAIN" 0 203 "void()" `654  "Initialization *"
 C L "MAIN" 0 25 1 "FUNCTION"
 C L "MAIN" 0 25 1 "FUNCTION"
 C L "MAIN" 0 25 1 "FUNCTION"
 C L "MAIN" 0 25 1 "FUNCTION"
 C L "MAIN" 0 25 3 "FUNCTION"
 C L "MAIN" 0 25 1 "FUNCTION"
-V L "c_tray_on" 0 226 "int8" `657 
-V L "c_ss" 0 227 "int8" `658 
+V L "c_tray_on" 0 243 "int8" `657 
+V L "c_ss" 0 244 "int8" `658 
 C L "MAIN" 0 25 1 "FUNCTION"
 C L "MAIN" 0 25 1 "FUNCTION"
 C L "MAIN" 0 25 1 "FUNCTION"
