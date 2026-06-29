@@ -1,6 +1,6 @@
-CCS PCM C Compiler, Version 5.115, 43599               27-ώνθ-26 14:13
+CCS PCM C Compiler, Version 5.115, 43599               29-ώνθ-26 14:57
 
-               Filename:   F:\CD_001\VW\T-cross_2024_bf3\MemSSA\MemSSA_16f684_030_2026\mssa.lst
+               Filename:   D:\Install\VW\Manuals\T-cross_2024_bf3\MemSSA\MemSSA_16f684_03000_2026\mssa.lst
 
                ROM used:   538 words (26%)
                            Largest free fragment is 1510
@@ -129,17 +129,18 @@ CCS PCM C Compiler, Version 5.115, 43599               27-ώνθ-26 14:13
 .................... #define MAX_SEC 40 //40=40*200=8s
 .................... #define MIN_SEC 10 //10=10*200=2s
 .................... #define DEF_SEC 30 //30=30*200=6s
-.................... /*
-.................... #define MAX_ESEC 14 //120*15=1800ms = 3-flashing
-.................... // MID=12           //120*13=1560ms = 2-flashing
-.................... #define MIN_ESEC 10 //120*11=1320ms = 1-flashing
-.................... #define DEF_ESEC 10
-.................... */
-.................... #define DEF_ESEC 10
 .................... 
-.................... #define TRY_002 9           //(9*250=2250ms)=9
-.................... #define TRY_003 (TRY_002+5) //9+(5*250ms=1250ms)=14
-.................... #define TRY_END (TRY_003+5) //14+(5*250ms=1250ms)=19
+.................... /*#define MAX_ESEC 20 //120*21=2520ms = 4-flashing
+.................... //     18           //120*19=2280ms = 3-flashing
+.................... //     16           //120*17=2040ms = 2-flashing
+.................... #define MIN_ESEC 14 //120*15=1800ms = 1-flashing
+.................... //#define MIN_ESEC 12 //120*13=1560ms
+.................... //#define MIN_ESEC 10 //120*11=1320ms*/
+.................... #define DEF_ESEC 16 //old=10
+.................... 
+.................... #define TRY_002 13          //(13*250=3250ms)=13         (9*250=2250ms)=9
+.................... #define TRY_003 (TRY_002+8) //13+(8*250ms=2000ms)=21   9+(5*250ms=1250ms)=14
+.................... #define TRY_END (TRY_003+8) //21+(8*250ms=2000ms)=29  14+(5*250ms=1250ms)=19
 .................... 
 .................... #if defined PIC12F683X
 .................... #define BUT_SEC         (PIN_A2)
@@ -199,7 +200,6 @@ CCS PCM C Compiler, Version 5.115, 43599               27-ώνθ-26 14:13
 0036:  RETURN
 .................... }
 .................... int read_sec = 0;
-.................... //int exce_sec = 0;
 .................... BOOLEAN wait1234sec(void)
 0037:  BSF    2B.0
 0038:  CLRF   2C
@@ -225,7 +225,7 @@ CCS PCM C Compiler, Version 5.115, 43599               27-ώνθ-26 14:13
 0043:  INCF   2D,F
 ....................             if (count_except > DEF_ESEC)//except=(0+120=120)*11=1320ms //120*15=1800ms
 0044:  MOVF   2D,W
-0045:  SUBLW  0A
+0045:  SUBLW  10
 0046:  BTFSC  03.0
 0047:  GOTO   04A
 ....................             {
@@ -266,7 +266,7 @@ CCS PCM C Compiler, Version 5.115, 43599               27-ώνθ-26 14:13
 005F:  BCF    2B.0
 ....................         to = (DEF_ESEC+1)-count_except;
 0060:  MOVF   2D,W
-0061:  SUBLW  0B
+0061:  SUBLW  11
 0062:  MOVWF  2C
 ....................         for (int i=0; i<to; ++i)//try times to 1320ms
 0063:  CLRF   2F
@@ -817,7 +817,7 @@ CCS PCM C Compiler, Version 5.115, 43599               27-ώνθ-26 14:13
 01E5:  BTFSS  03.2
 01E6:  GOTO   1EB
 01E7:  MOVF   29,W
-01E8:  SUBLW  13
+01E8:  SUBLW  1D
 01E9:  BTFSC  03.0
 01EA:  GOTO   1F0
 01EB:  BSF    03.5
@@ -871,18 +871,18 @@ CCS PCM C Compiler, Version 5.115, 43599               27-ώνθ-26 14:13
 0209:  BTFSC  03.2
 020A:  GOTO   218
 020B:  MOVF   29,W
-020C:  SUBLW  13
+020C:  SUBLW  1D
 020D:  BTFSS  03.0
 020E:  GOTO   218
 ....................             {
 ....................                 if (c_tray_on==TRY_002) tray_to_on();//(9*250ms=2250ms)=9
 020F:  MOVF   29,W
-0210:  SUBLW  09
+0210:  SUBLW  0D
 0211:  BTFSC  03.2
 0212:  CALL   079
 ....................                 if (c_tray_on==TRY_003) tray_to_on();//9+(5*250ms=1250ms)=14
 0213:  MOVF   29,W
-0214:  SUBLW  0E
+0214:  SUBLW  15
 0215:  BTFSC  03.2
 0216:  CALL   079
 ....................                 c_tray_on++;//14+(5*250ms=1250ms)=19 ++ to 20max

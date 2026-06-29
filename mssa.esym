@@ -1,7 +1,7 @@
 D G "__PCM__" 0 327 ""5.115""
 D G "__DEVICE__" 0 327 "683"
-D G "__DATE__" 0 327 ""27-Jun-26""
-D G "__TIME__" 0 327 ""14:13:45""
+D G "__DATE__" 0 327 ""29-Jun-26""
+D G "__TIME__" 0 327 ""14:57:00""
 D G "_UNICODE" 0 327 ""?""
 D G "__EVAL" 0 327 ""?"" "* mssa.c"
 C G "" 0 1 1 "*"
@@ -1074,19 +1074,18 @@ D G "COU_SAVE_SECH" 0 52 "2" "3=750 4*170+4*80=680+320=1000  8*158+8*92=1264+736
 D G "MAX_SEC" 0 57 "40" "40=40*200=8s"
 D G "MIN_SEC" 0 58 "10" "10=10*200=2s"
 D G "DEF_SEC" 0 59 "30" "30=30*200=6s"
-D G "DEF_ESEC" 0 66 "10"
-D G "TRY_002" 0 68 "9" "(9*250=2250ms)=9"
-D G "TRY_003" 0 69 " (TRY_002+5)" "9+(5*250ms=1250ms)=14"
-D G "TRY_END" 0 70 " (TRY_003+5)" "14+(5*250ms=1250ms)=19"
-F N "is_on_bssa" 0 81 ""
-F G "is_on_bssa" 0 82 "int8()" `629 
-V L "res" 0 83 "int1" `630 
-V L "c_bssa" 0 84 "int8" `631 
-V L "i" 0 85 "int8" `632 
+D G "DEF_ESEC" 0 67 "16" "old=10"
+D G "TRY_002" 0 69 "13" "(13*250=3250ms)=13         (9*250=2250ms)=9"
+D G "TRY_003" 0 70 " (TRY_002+8)" "13+(8*250ms=2000ms)=21   9+(5*250ms=1250ms)=14"
+D G "TRY_END" 0 71 " (TRY_003+8)" "21+(8*250ms=2000ms)=29  14+(5*250ms=1250ms)=19"
+F N "is_on_bssa" 0 82 ""
+F G "is_on_bssa" 0 83 "int8()" `629 
+V L "res" 0 84 "int1" `630 
+V L "c_bssa" 0 85 "int8" `631 
+V L "i" 0 86 "int8" `632 
 C L "is_on_bssa" 0 25 1 "FUNCTION"
 C L "is_on_bssa" 0 25 1 "FUNCTION"
-V G "read_sec" 0 98 "int8" `633 
-C L "wait1234sec" 0 25 1 "FUNCTION"
+V G "read_sec" 0 99 "int8" `633 
 F N "wait1234sec" 0 100 ""
 F G "wait1234sec" 0 101 "int8()" `634 
 V L "res" 0 102 "int1" `635 

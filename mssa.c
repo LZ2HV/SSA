@@ -57,17 +57,18 @@
 #define MAX_SEC 40 //40=40*200=8s
 #define MIN_SEC 10 //10=10*200=2s
 #define DEF_SEC 30 //30=30*200=6s
-/*
-#define MAX_ESEC 14 //120*15=1800ms = 3-flashing
-// MID=12           //120*13=1560ms = 2-flashing
-#define MIN_ESEC 10 //120*11=1320ms = 1-flashing
-#define DEF_ESEC 10
-*/
-#define DEF_ESEC 10
 
-#define TRY_002 9           //(9*250=2250ms)=9
-#define TRY_003 (TRY_002+5) //9+(5*250ms=1250ms)=14
-#define TRY_END (TRY_003+5) //14+(5*250ms=1250ms)=19
+/*#define MAX_ESEC 20 //120*21=2520ms = 4-flashing
+//     18           //120*19=2280ms = 3-flashing
+//     16           //120*17=2040ms = 2-flashing
+#define MIN_ESEC 14 //120*15=1800ms = 1-flashing
+//#define MIN_ESEC 12 //120*13=1560ms
+//#define MIN_ESEC 10 //120*11=1320ms*/
+#define DEF_ESEC 16 //old=10
+
+#define TRY_002 13          //(13*250=3250ms)=13         (9*250=2250ms)=9
+#define TRY_003 (TRY_002+8) //13+(8*250ms=2000ms)=21   9+(5*250ms=1250ms)=14
+#define TRY_END (TRY_003+8) //21+(8*250ms=2000ms)=29  14+(5*250ms=1250ms)=19
 
 #if defined PIC12F683X
 #define BUT_SEC         (PIN_A2)
@@ -96,7 +97,6 @@ BOOLEAN is_on_bssa(void)
     return res;
 }
 int read_sec = 0;
-//int exce_sec = 0;
 BOOLEAN wait1234sec(void)
 {
     BOOLEAN res = true; //int try = 0;

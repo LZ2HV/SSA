@@ -14,7 +14,7 @@ Stack size: 8
 Lines Stmts  %   Files
 ----- ----- ---  -----
   326   143 100  mssa.c
-  656     0   0  D:\PICC_5_115\Devices\16f684.h
+  656     0   0  ..\..\..\..\..\..\PICC_5115\Devices\16f684.h
 ----- -----
   982   143 Total
 
@@ -33,14 +33,14 @@ Page ROM  %  RAM    Vol Diff  Functions:
 Program metrics:
     Functions               6
     Statements              143
-    Comments                195
+    Comments                194
     Volume (V)              5946
     Difficulty (D)          33.1
     Effort to implement (E) 196574
     Time to implement (T)   3 hours, 2 minutes
     Est Delivered Bugs (B)  1
     Cyclomatic Complexity   33
-    Maintainability (MI)    110
+    Maintainability (MI)    111
 
  Segment     Used  Free
 -----------  ----  ----
