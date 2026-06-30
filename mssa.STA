@@ -27,17 +27,17 @@ Page ROM  %  RAM    Vol Diff  Functions:
  Inline         2    216  3.3  led_flash
 0    125  23    2    598  6.0  refresh_read_button
  Inline         3             @DIV88
-0    269  50    2   2410  8.1  MAIN
+0    269  50    2   2286  8.1  MAIN
  Inline         0             @cinit1
 
 Program metrics:
     Functions               6
     Statements              143
     Comments                194
-    Volume (V)              5946
+    Volume (V)              5805
     Difficulty (D)          33.1
-    Effort to implement (E) 196574
-    Time to implement (T)   3 hours, 2 minutes
+    Effort to implement (E) 191858
+    Time to implement (T)   2 hours, 58 minutes
     Est Delivered Bugs (B)  1
     Cyclomatic Complexity   33
     Maintainability (MI)    111

@@ -1,4 +1,4 @@
-CCS PCM C Compiler, Version 5.115, 43599               29-ώνθ-26 14:57
+CCS PCM C Compiler, Version 5.115, 43599               30-ώνθ-26 10:22
 
                Filename:   D:\Install\VW\Manuals\T-cross_2024_bf3\MemSSA\MemSSA_16f684_03000_2026\mssa.lst
 
@@ -138,9 +138,9 @@ CCS PCM C Compiler, Version 5.115, 43599               29-ώνθ-26 14:57
 .................... //#define MIN_ESEC 10 //120*11=1320ms*/
 .................... #define DEF_ESEC 16 //old=10
 .................... 
-.................... #define TRY_002 13          //(13*250=3250ms)=13         (9*250=2250ms)=9
-.................... #define TRY_003 (TRY_002+8) //13+(8*250ms=2000ms)=21   9+(5*250ms=1250ms)=14
-.................... #define TRY_END (TRY_003+8) //21+(8*250ms=2000ms)=29  14+(5*250ms=1250ms)=19
+.................... #define TRY_002 14 //14=3500ms      (13*250=3250ms)=13         (9*250=2250ms)=9
+.................... #define TRY_003 24 //24=6000ms      13+(8*250ms=2000ms)=21   9+(5*250ms=1250ms)=14
+.................... #define TRY_END 34 //34=8500ms      21+(8*250ms=2000ms)=29  14+(5*250ms=1250ms)=19
 .................... 
 .................... #if defined PIC12F683X
 .................... #define BUT_SEC         (PIN_A2)
@@ -817,7 +817,7 @@ CCS PCM C Compiler, Version 5.115, 43599               29-ώνθ-26 14:57
 01E5:  BTFSS  03.2
 01E6:  GOTO   1EB
 01E7:  MOVF   29,W
-01E8:  SUBLW  1D
+01E8:  SUBLW  22
 01E9:  BTFSC  03.0
 01EA:  GOTO   1F0
 01EB:  BSF    03.5
@@ -871,18 +871,18 @@ CCS PCM C Compiler, Version 5.115, 43599               29-ώνθ-26 14:57
 0209:  BTFSC  03.2
 020A:  GOTO   218
 020B:  MOVF   29,W
-020C:  SUBLW  1D
+020C:  SUBLW  22
 020D:  BTFSS  03.0
 020E:  GOTO   218
 ....................             {
 ....................                 if (c_tray_on==TRY_002) tray_to_on();//(9*250ms=2250ms)=9
 020F:  MOVF   29,W
-0210:  SUBLW  0D
+0210:  SUBLW  0E
 0211:  BTFSC  03.2
 0212:  CALL   079
 ....................                 if (c_tray_on==TRY_003) tray_to_on();//9+(5*250ms=1250ms)=14
 0213:  MOVF   29,W
-0214:  SUBLW  15
+0214:  SUBLW  18
 0215:  BTFSC  03.2
 0216:  CALL   079
 ....................                 c_tray_on++;//14+(5*250ms=1250ms)=19 ++ to 20max

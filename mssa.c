@@ -66,9 +66,9 @@
 //#define MIN_ESEC 10 //120*11=1320ms*/
 #define DEF_ESEC 16 //old=10
 
-#define TRY_002 13          //(13*250=3250ms)=13         (9*250=2250ms)=9
-#define TRY_003 (TRY_002+8) //13+(8*250ms=2000ms)=21   9+(5*250ms=1250ms)=14
-#define TRY_END (TRY_003+8) //21+(8*250ms=2000ms)=29  14+(5*250ms=1250ms)=19
+#define TRY_002 14 //14=3500ms      (13*250=3250ms)=13         (9*250=2250ms)=9
+#define TRY_003 24 //24=6000ms      13+(8*250ms=2000ms)=21   9+(5*250ms=1250ms)=14
+#define TRY_END 34 //34=8500ms      21+(8*250ms=2000ms)=29  14+(5*250ms=1250ms)=19
 
 #if defined PIC12F683X
 #define BUT_SEC         (PIN_A2)

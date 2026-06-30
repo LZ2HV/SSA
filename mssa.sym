@@ -50,12 +50,12 @@ Project Directory:
     D:\Install\VW\Manuals\T-cross_2024_bf3\MemSSA\MemSSA_16f684_03000_2026\
 
 Project Files:
-    mssa.c                                                  [29-ώνθ-26 14:57  CRC=6D6F9575]
+    mssa.c                                                  [30-ώνθ-26 10:22  CRC=086C53A4]
     ..\..\..\..\..\..\PICC_5115\Devices\16f684.h            [07-μΰπ-23 19:18  CRC=80E9E0D1]
 
-Source signature=6F435717
+Source signature=0A401546
 Program memory checksum=0000
-Hex file CRC=41F0
+Hex file CRC=9A8B
 
 Units:
     D:\Install\VW\Manuals\T-cross_2024_bf3\MemSSA\MemSSA_16f684_03000_2026\mssa (main)
