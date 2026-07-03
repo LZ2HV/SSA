@@ -9,9 +9,10 @@
       ÃÄ@delay_ms1  0/20  Ram=1
       ÃÄ@delay_ms1  0/20  Ram=1
       ÃÄwait1234sec  0/66  Ram=5
-      ³  ÃÄis_on_bssa  0/31  Ram=3
+      ³  ÃÄis_on_bssa  0/58  Ram=5
+      ³  ³  ÃÄ@delay_ms1  0/20  Ram=1
       ³  ³  ÀÄ@delay_ms1  0/20  Ram=1
-      ³  ÀÄis_on_bssa  0/31  Ram=3
+      ³  ÀÄis_on_bssa  0/58  Ram=5
       ³     ÀÄ*
       ÃÄtray_to_on  0/23  Ram=0
       ³  ÃÄ@delay_ms1  0/20  Ram=1
@@ -19,7 +20,7 @@
       ÃÄ@delay_ms1  0/20  Ram=1
       ÃÄ@delay_ms1  0/20  Ram=1
       ÃÄrefresh_read_button  0/125  Ram=2
-      ³  ÃÄis_on_bssa  0/31  Ram=3
+      ³  ÃÄis_on_bssa  0/58  Ram=5
       ³  ³  ÀÄ*
       ³  ÃÄ@delay_ms1  0/20  Ram=1
       ³  ÃÄ@delay_ms1  0/20  Ram=1
@@ -31,7 +32,7 @@
       ÃÄ@delay_ms1  0/20  Ram=1
       ÃÄ@delay_ms1  0/20  Ram=1
       ÃÄ@delay_ms1  0/20  Ram=1
-      ÃÄis_on_bssa  0/31  Ram=3
+      ÃÄis_on_bssa  0/58  Ram=5
       ³  ÀÄ*
       ÃÄtray_to_on  0/23  Ram=0
       ³  ÀÄ*

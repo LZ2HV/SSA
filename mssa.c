@@ -48,7 +48,7 @@
 #define A05_MMM         (PIN_A5)
 #endif
 
-#define COU_SAVE_SECL 16  //17*150+17*100=2550+1700=4250s
+#define COU_SAVE_SECL 15  //16-1//17*150+17*100=2550+1700=4250s
 #define COU_SAVE_SECH 2   //3=750 4*170+4*80=680+320=1000  8*158+8*92=1264+736=2000s
 /*#define MAX_SSEC 24 //24=6s
 #define MIN_SSEC 4  //4=1s
@@ -83,8 +83,10 @@ BOOLEAN is_on_bssa(void)
 {
     BOOLEAN res = false;
     int c_bssa = 0;
+    int to = 0;
     for (int i=0; i<20; ++i)//200ms
     {
+        delay_ms(10);    
         if (!input(SSA_BUT)) c_bssa++;
         else c_bssa = 0;
         if (c_bssa > 12)//120ms
@@ -92,7 +94,20 @@ BOOLEAN is_on_bssa(void)
             res = true;
             break;
         }
-        delay_ms(10);
+    }
+    if (!res && c_bssa > 0)
+    {
+        res = true;
+        to = 13 - c_bssa;
+        for (int i=0; i<to; ++i)//try times to 1320ms
+        {
+            delay_ms(10);        
+            if (input(SSA_BUT))
+            {
+               res = false;
+               break;
+            }
+        }
     }
     return res;
 }
@@ -168,7 +183,7 @@ void refresh_read_button(void)
     {
         save_ssa=1;
         read_ssa = tread_ssa;
-        delay_ms(100);
+        delay_ms(20);
     } 
     delay_ms(10);
     if (!input(BUT_SEC))
