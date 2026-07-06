@@ -40,7 +40,7 @@
 
 #if defined PIC16F684X
 #define BUT_SEC         (PIN_A4)
-#define SSA_BUT         (PIN_A1)
+#define SSA_LED         (PIN_A1)
 #define SWI_OUT         (PIN_C0)
 #define DEB_WRI         (PIN_C4)
 #define DEB_EXE         (PIN_C3)
@@ -66,13 +66,13 @@
 //#define MIN_ESEC 10 //120*11=1320ms*/
 #define DEF_ESEC 16 //old=10
 
-#define TRY_002 14 //14=3500ms      (13*250=3250ms)=13         (9*250=2250ms)=9
-#define TRY_003 24 //24=6000ms      13+(8*250ms=2000ms)=21   9+(5*250ms=1250ms)=14
-#define TRY_END 34 //34=8500ms      21+(8*250ms=2000ms)=29  14+(5*250ms=1250ms)=19
+#define TRY_002 14 //14=3500ms
+#define TRY_003 24 //24=6000ms
+#define TRY_END 34 //34=8500ms
 
 #if defined PIC12F683X
 #define BUT_SEC         (PIN_A2)
-#define SSA_BUT         (PIN_A0)
+#define SSA_LED         (PIN_A0)
 #define SWI_OUT         (PIN_A1)
 //#define DEB_EXE       (PIN_A3)
 #define DEB_WRI         (PIN_A4)//error PIN_A4=PIN_A3 ????
@@ -87,7 +87,7 @@ BOOLEAN is_on_bssa(void)
     for (int i=0; i<20; ++i)//200ms
     {
         delay_ms(10);    
-        if (!input(SSA_BUT)) c_bssa++;
+        if (!input(SSA_LED)) c_bssa++;
         else c_bssa = 0;
         if (c_bssa > 12)//120ms
         {
@@ -99,10 +99,10 @@ BOOLEAN is_on_bssa(void)
     {
         res = true;
         to = 13 - c_bssa;
-        for (int i=0; i<to; ++i)//try times to 1320ms
+        for (int i=0; i<to; ++i)
         {
             delay_ms(10);        
-            if (input(SSA_BUT))
+            if (input(SSA_LED))
             {
                res = false;
                break;
@@ -114,7 +114,7 @@ BOOLEAN is_on_bssa(void)
 int read_sec = 0;
 BOOLEAN wait1234sec(void)
 {
-    BOOLEAN res = true; //int try = 0;
+    BOOLEAN res = true;
     int to = 0;
     int count_except = 0;
     for (int i=0; i<read_sec; ++i)
@@ -259,7 +259,7 @@ void main(void)
     int c_ss = 0;
     if (read_ssa == 3)
     {
-        delay_ms(100);//old=100 //BOOLEAN res = wait1234sec();
+        delay_ms(100);
         if (wait1234sec())
         {
             tray_to_on();
@@ -311,12 +311,12 @@ void main(void)
         if (save_ssa > 0) save_ssa++;
 #if defined DEBUG_MAINN
         if (save_ssa > 0 || c_tray_on > 0) f_main = 1;
-        if (f_main < 1 || save_ssa > 0 || c_tray_on > TRY_END) output_high(DEB_EXC_SAV_MIN);//exception=17->c_tray_on > 16
+        if (f_main < 1 || save_ssa > 0 || c_tray_on > TRY_END) output_high(DEB_EXC_SAV_MIN);
         else output_low(DEB_EXC_SAV_MIN);
         if (f_main > 9) f_main = 0;
         else f_main++;
 #else
-        if (save_ssa > 0 || c_tray_on > TRY_END) output_high(DEB_EXC_SAV_MIN);//exception=17->c_tray_on > 16
+        if (save_ssa > 0 || c_tray_on > TRY_END) output_high(DEB_EXC_SAV_MIN);
         else output_low(DEB_EXC_SAV_MIN);
 #endif
         if (c_tray_on > 0)
@@ -331,9 +331,9 @@ void main(void)
             }
             if (c_tray_on > 0 && c_tray_on < (TRY_END+1))
             {
-                if (c_tray_on==TRY_002) tray_to_on();//(9*250ms=2250ms)=9
-                if (c_tray_on==TRY_003) tray_to_on();//9+(5*250ms=1250ms)=14
-                c_tray_on++;//14+(5*250ms=1250ms)=19 ++ to 20max
+                if (c_tray_on==TRY_002) tray_to_on();
+                if (c_tray_on==TRY_003) tray_to_on();
+                c_tray_on++;
             }
         }
     }

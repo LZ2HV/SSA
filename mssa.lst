@@ -1,4 +1,4 @@
-CCS PCM C Compiler, Version 5.115, 43599               03-ўыш-26 09:21
+CCS PCM C Compiler, Version 5.115, 43599               06-ўыш-26 09:48
 
                Filename:   D:\Install\VW\Manuals\T-cross_2024_bf3\MemSSA\MemSSA_16f684_03000_2026\mssa.lst
 
@@ -112,7 +112,7 @@ CCS PCM C Compiler, Version 5.115, 43599               03-ўыш-26 09:21
 .................... 
 .................... #if defined PIC16F684X
 .................... #define BUT_SEC         (PIN_A4)
-.................... #define SSA_BUT         (PIN_A1)
+.................... #define SSA_LED         (PIN_A1)
 .................... #define SWI_OUT         (PIN_C0)
 .................... #define DEB_WRI         (PIN_C4)
 .................... #define DEB_EXE         (PIN_C3)
@@ -138,13 +138,13 @@ CCS PCM C Compiler, Version 5.115, 43599               03-ўыш-26 09:21
 .................... //#define MIN_ESEC 10 //120*11=1320ms*/
 .................... #define DEF_ESEC 16 //old=10
 .................... 
-.................... #define TRY_002 14 //14=3500ms      (13*250=3250ms)=13         (9*250=2250ms)=9
-.................... #define TRY_003 24 //24=6000ms      13+(8*250ms=2000ms)=21   9+(5*250ms=1250ms)=14
-.................... #define TRY_END 34 //34=8500ms      21+(8*250ms=2000ms)=29  14+(5*250ms=1250ms)=19
+.................... #define TRY_002 14 //14=3500ms
+.................... #define TRY_003 24 //24=6000ms
+.................... #define TRY_END 34 //34=8500ms
 .................... 
 .................... #if defined PIC12F683X
 .................... #define BUT_SEC         (PIN_A2)
-.................... #define SSA_BUT         (PIN_A0)
+.................... #define SSA_LED         (PIN_A0)
 .................... #define SWI_OUT         (PIN_A1)
 .................... //#define DEB_EXE       (PIN_A3)
 .................... #define DEB_WRI         (PIN_A4)//error PIN_A4=PIN_A3 ????
@@ -170,7 +170,7 @@ CCS PCM C Compiler, Version 5.115, 43599               03-ўыш-26 09:21
 0020:  MOVLW  0A
 0021:  MOVWF  35
 0022:  CALL   004
-....................         if (!input(SSA_BUT)) c_bssa++;
+....................         if (!input(SSA_LED)) c_bssa++;
 0023:  BSF    03.5
 0024:  BSF    05.1
 0025:  BCF    03.5
@@ -207,7 +207,7 @@ CCS PCM C Compiler, Version 5.115, 43599               03-ўыш-26 09:21
 0039:  MOVF   31,W
 003A:  SUBLW  0D
 003B:  MOVWF  32
-....................         for (int i=0; i<to; ++i)//try times to 1320ms
+....................         for (int i=0; i<to; ++i)
 003C:  CLRF   34
 003D:  MOVF   32,W
 003E:  SUBWF  34,W
@@ -218,7 +218,7 @@ CCS PCM C Compiler, Version 5.115, 43599               03-ўыш-26 09:21
 0041:  MOVLW  0A
 0042:  MOVWF  35
 0043:  CALL   004
-....................             if (input(SSA_BUT))
+....................             if (input(SSA_LED))
 0044:  BSF    03.5
 0045:  BSF    05.1
 0046:  BCF    03.5
@@ -247,7 +247,7 @@ CCS PCM C Compiler, Version 5.115, 43599               03-ўыш-26 09:21
 0053:  CLRF   2C
 0054:  CLRF   2D
 .................... {
-....................     BOOLEAN res = true; //int try = 0;
+....................     BOOLEAN res = true;
 ....................     int to = 0;
 ....................     int count_except = 0;
 ....................     for (int i=0; i<read_sec; ++i)
@@ -692,7 +692,7 @@ CCS PCM C Compiler, Version 5.115, 43599               03-ўыш-26 09:21
 018F:  BTFSS  03.2
 0190:  GOTO   19B
 ....................     {
-....................         delay_ms(100);//old=100 //BOOLEAN res = wait1234sec();
+....................         delay_ms(100);
 0191:  MOVLW  64
 0192:  MOVWF  35
 0193:  CALL   004
@@ -851,7 +851,7 @@ CCS PCM C Compiler, Version 5.115, 43599               03-ўыш-26 09:21
 01F9:  GOTO   1FC
 01FA:  MOVLW  01
 01FB:  MOVWF  27
-....................         if (f_main < 1 || save_ssa > 0 || c_tray_on > TRY_END) output_high(DEB_EXC_SAV_MIN);//exception=17->c_tray_on > 16
+....................         if (f_main < 1 || save_ssa > 0 || c_tray_on > TRY_END) output_high(DEB_EXC_SAV_MIN);
 01FC:  MOVF   27,F
 01FD:  BTFSC  03.2
 01FE:  GOTO   206
@@ -882,7 +882,7 @@ CCS PCM C Compiler, Version 5.115, 43599               03-ўыш-26 09:21
 ....................         else f_main++;
 0215:  INCF   27,F
 .................... #else
-....................         if (save_ssa > 0 || c_tray_on > TRY_END) output_high(DEB_EXC_SAV_MIN);//exception=17->c_tray_on > 16
+....................         if (save_ssa > 0 || c_tray_on > TRY_END) output_high(DEB_EXC_SAV_MIN);
 ....................         else output_low(DEB_EXC_SAV_MIN);
 .................... #endif
 ....................         if (c_tray_on > 0)
@@ -917,17 +917,17 @@ CCS PCM C Compiler, Version 5.115, 43599               03-ўыш-26 09:21
 0228:  BTFSS  03.0
 0229:  GOTO   233
 ....................             {
-....................                 if (c_tray_on==TRY_002) tray_to_on();//(9*250ms=2250ms)=9
+....................                 if (c_tray_on==TRY_002) tray_to_on();
 022A:  MOVF   29,W
 022B:  SUBLW  0E
 022C:  BTFSC  03.2
 022D:  CALL   094
-....................                 if (c_tray_on==TRY_003) tray_to_on();//9+(5*250ms=1250ms)=14
+....................                 if (c_tray_on==TRY_003) tray_to_on();
 022E:  MOVF   29,W
 022F:  SUBLW  18
 0230:  BTFSC  03.2
 0231:  CALL   094
-....................                 c_tray_on++;//14+(5*250ms=1250ms)=19 ++ to 20max
+....................                 c_tray_on++;
 0232:  INCF   29,F
 ....................             }
 ....................         }

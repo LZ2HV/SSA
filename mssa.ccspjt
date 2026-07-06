@@ -37,7 +37,7 @@ AdditionalOptionString=
 1=mssa.c
 2=..\..\..\..\..\..\PICC_5115\Devices\12f675.h
 3=
-t1=1
+t1=4
 Count=1
 t2=1
 
@@ -45,7 +45,7 @@ t2=1
 forcecoff=0
 
 [ProjectLog]
-Days=49
+Days=50
 D1=06-11-2025
 D1_L=22
 D1_L1=[57211]Project Opened.
@@ -55,7 +55,7 @@ D1_L4=[57967]Started Editing.
 D1_L5=[58685]Stopped Editing.
 D1_L6=[58985]Started Editing.
 D1_L7=[59515]Stopped Editing.
-TotalEdit=1703
+TotalEdit=1710
 TotalDebug=0
 D1_E=98
 D1_D=0
@@ -1145,11 +1145,23 @@ D49_L5=[33691]Stopped Editing.
 D49_E=3
 D49_D=0
 D49_L6=[33691]Project Closed.
+D50=06-07-2026
+D50_L=8
+D50_L1=[34970]Project Opened.
+D50_L2=[34977]Started Editing.
+D50_L3=[35029]Stopped Editing.
+D50_E=7
+D50_D=0
+D50_L4=[35030]Project Closed.
+D50_L5=[35102]Project Opened.
+D50_L6=[35142]Started Editing.
+D50_L7=[35495]Stopped Editing.
+D50_L8=[35495]Project Closed.
 [mssa.c]
 Type=4
 
 [defines]
-buildcount=1714
+buildcount=1722
 [Units]
 Count=1
 1=mssa (main)
