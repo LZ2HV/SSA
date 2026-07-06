@@ -37,13 +37,13 @@ Schematics and boards is in directory "sch", thers have three variants, two with
 ![Sch](https://github.com/LZ2HV/SSA/blob/d15fbafb7d327980c333e8f883bb0fbb9c20ada8/pic/Sch.png)
 
 <strong>DIP PIC12 variant: Gerber file sch/mssaPIC12_2026-06-18.zip, This variant work only for Button with GND.</strong><br/>
-![Top](https://github.com/LZ2HV/SSA/blob/b3624d15f0a9bdb992976c37291aef9ca946b0ae/pic/top12dip.png)
-![Bottom](https://github.com/LZ2HV/SSA/blob/b3624d15f0a9bdb992976c37291aef9ca946b0ae/pic/bott12dip.png)<br/>
+![Top](https://github.com/LZ2HV/SSA/blob/8d450ef0e1181f4ad6d813e0298386c6cf3a97b7/pic/top12dip.png)
+![Bottom](https://github.com/LZ2HV/SSA/blob/8d450ef0e1181f4ad6d813e0298386c6cf3a97b7/pic/bott12dip.png)<br/>
 ![Sch](https://github.com/LZ2HV/SSA/blob/9af92bbd12c704825a600c717d9a045e55b9f95b/pic/sch12.png)
 
 <strong>DIP PIC16 variant: Gerber file sch/mssaPIC16_2026-06-18.zip, This variant work only for Button with GND.</strong><br/>
-![Top](https://github.com/LZ2HV/SSA/blob/b3624d15f0a9bdb992976c37291aef9ca946b0ae/pic/top16dip.png)
-![Bottom](https://github.com/LZ2HV/SSA/blob/b3624d15f0a9bdb992976c37291aef9ca946b0ae/pic/bot16dip.png)<br/>
+![Top](https://github.com/LZ2HV/SSA/blob/8d450ef0e1181f4ad6d813e0298386c6cf3a97b7/pic/top16dip.png)
+![Bottom](https://github.com/LZ2HV/SSA/blob/8d450ef0e1181f4ad6d813e0298386c6cf3a97b7/pic/bott16dip.png)<br/>
 ![Sch](https://github.com/LZ2HV/SSA/blob/9af92bbd12c704825a600c717d9a045e55b9f95b/pic/sch16.png)
 
 <strong>Prototype: In My VW T-Cross 2025</strong><br/>
