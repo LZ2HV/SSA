@@ -1,7 +1,7 @@
 /*
  * mssa.c
  * Description:
- * This is start/stop system memory, for the PIC16F684 or PIC12F683 or PIC12F675 chips.
+ * This is start/stop system memory, for the PIC16F684 or PIC16F676 or PIC12F683 or PIC12F675 chips.
  * Author: LZ2HV, Christo
  * Creation date: 2025 for VW T-Cross 2025
  */
@@ -10,6 +10,7 @@
 #define DEBUG_MAINN
 
 #define PIC16F684X
+//#define PIC16F676X
 //#define PIC12F683X  // ok as PIC12F675
 //#define PIC12F675X
 //#define PIC12F1571X //write_program_eeprom  read_program_eeprom
@@ -17,13 +18,16 @@
 #if defined PIC16F684X
 #include <16f684.h>
 #endif
+#if defined PIC16F676X
+#include <16f676.h>
+#endif
 #if defined PIC12F683X
 #include <12f683.h> //ok
-//#include <12f675.h>
 //#include <12f1571.h> //write_program_eeprom
 #endif
-//#device *=16 /* Allow RAM to expand beyond 256 bytes */
-//#device ADC=10  // Use 10 bits 10bit (5volt;correspond;1024) or 8bit(5volt;correspond;256)
+#if defined PIC12F675X
+#include <12f675.h>
+#endif
 
 /* Microcontroller configuration bits */
 //#byte OSCCON=0x8F
@@ -37,7 +41,7 @@
 //#byte OSCTUNE = 0x90
 //#bit PLLEN=OSCTUNE.6 
  
-#if defined PIC16F684X
+#if (defined(PIC16F684X)||defined(PIC16F676X))
 #define BUT_SEC         (PIN_A4)
 #define SSA_LED         (PIN_A1)
 #define SWI_OUT         (PIN_C0)
@@ -47,7 +51,7 @@
 #define A05_MMM         (PIN_A5)
 #endif
 
-#if defined PIC12F683X
+#if (defined(PIC12F683X)||defined(PIC12F675X))
 #define BUT_SEC         (PIN_A2)
 #define SSA_LED         (PIN_A0)
 #define SWI_OUT         (PIN_A1)
@@ -216,21 +220,23 @@ void refresh_read_button(void)
 void main(void)
 {
     /* Initialization */
-    //OSCCON=0;
-#if defined PIC16F684X
+#if (defined(PIC16F684X)||defined(PIC16F676X))
+#if defined(PIC16F684X)
     setup_oscillator(OSC_4MHZ);
-    //enable_interrupts(GLOBAL);
+#endif
     set_tris_a(0b00010010);// 1 -> vhod     0-> izhod
     set_tris_c(0b00000000);
     output_c(0);
     output_low(A05_MMM);
 #endif
 
-#if defined PIC12F683X   // inputs=1 output=0 (bitove-> 0b_76543210_ )
+#if (defined(PIC12F683X)||defined(PIC12F675X))  // inputs=1 output=0 (bitove-> 0b_76543210_ )
     //setup_adc_ports(NO_ANALOGS);
     //setup_comparator(NC_NC);
     //OSCTUNE = 0x00;
+#if defined(PIC12F683X)
     setup_oscillator(OSC_4MHZ);//setup_oscillator(OSC_INTRC | OSC_4MHZ);
+#endif  
     //OSCTUNE = 0x00;
     //setup_oscillator(OSC_INTRC|OSC_4MHz,0);
     set_tris_a(0b00000101);

@@ -14,7 +14,7 @@
 026     save_ssa
 027     f_main
 028.0   f_b_sec
-029     MAIN.c_tray_on
+029     MAIN.c_try_on
 02A     MAIN.c_ss
 02B     refresh_read_button.tread_ssa
 02B.0   wait1234sec.res
@@ -28,19 +28,19 @@
 02E     @DIV88.P1
 02F     wait1234sec.i
 02F     @DIV88.@SCRATCH1
-030.0   is_on_bssa.res
-031     is_on_bssa.c_bssa
-032     is_on_bssa.to
-033     is_on_bssa.i
-034     is_on_bssa.i
+030.0   is_on_ssa_led.res
+031     is_on_ssa_led.c_bssa
+032     is_on_ssa_led.to
+033     is_on_ssa_led.i
+034     is_on_ssa_led.i
 035     @delay_ms1.P1
 09B-09C @READ_PROGRAM_MEMORY8.P1
 
 ROM Allocation:
 000004  @delay_ms1
-000018  is_on_bssa
+000018  is_on_ssa_led
 000052  wait1234sec
-000094  tray_to_on
+000094  try_to_on
 0000AB  refresh_read_button
 0000F1  @DIV88
 000109  led_flash
@@ -52,10 +52,10 @@ Project Directory:
     D:\Install\VW\Manuals\T-cross_2024_bf3\MemSSA\MemSSA_16f684_03000_2026\
 
 Project Files:
-    mssa.c                                                  [06-юли-26 09:48  CRC=32933EA4]
+    mssa.c                                                  [07-юли-26 10:30  CRC=962B9FA3]
     ..\..\..\..\..\..\PICC_5115\Devices\16f684.h            [07-мар-23 19:18  CRC=80E9E0D1]
 
-Source signature=34670046
+Source signature=97FF6145
 Program memory checksum=0000
 Hex file CRC=67C1
 
