@@ -47,6 +47,15 @@
 #define A05_MMM         (PIN_A5)
 #endif
 
+#if defined PIC12F683X
+#define BUT_SEC         (PIN_A2)
+#define SSA_LED         (PIN_A0)
+#define SWI_OUT         (PIN_A1)
+//#define DEB_EXE       (PIN_A3)
+#define DEB_WRI         (PIN_A4)//error PIN_A4=PIN_A3 ???
+#define DEB_EXC_SAV_MIN (PIN_A5)//error PIN -2=PIN_A5 ???
+#endif
+
 #define COU_SAVE_SECL 15  //16-1//17*150+17*100=2550+1700=4250s
 #define COU_SAVE_SECH 2   //3=750 4*170+4*80=680+320=1000  8*158+8*92=1264+736=2000s
 /*#define MAX_SSEC 24 //24=6s
@@ -68,15 +77,6 @@
 #define TRY_002 14 //14=3500ms
 #define TRY_003 24 //24=6000ms
 #define TRY_END 34 //34=8500ms
-
-#if defined PIC12F683X
-#define BUT_SEC         (PIN_A2)
-#define SSA_LED         (PIN_A0)
-#define SWI_OUT         (PIN_A1)
-//#define DEB_EXE       (PIN_A3)
-#define DEB_WRI         (PIN_A4)//error PIN_A4=PIN_A3 ????
-#define DEB_EXC_SAV_MIN (PIN_A5)//error PIN -2=PIN_A5 ????
-#endif
 
 BOOLEAN is_on_ssa_led(void)
 {
