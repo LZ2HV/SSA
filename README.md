@@ -1,13 +1,14 @@
 	
  Start-Stop memory Module for MQB platforms as VW: T-CROSS, T-ROC, Polo, Taigo.
- PIC16F684 or PIC12F683, and similar. 
+ PIC16F684 or PIC16F676 or PIC12F683 or PIC12F675, and similar. 
  
 Requirements to compile and understanding:
 1. Compilator, CCS PCWHD v5.115.
 2. SCH, Autodesk EAGLE v9.6.1.
 3. Simulator for testing, Proteus Professional v8.13.
 4. For writing into PIC, PICkit2 or PICkit3.<br/>
-For PIC16F684 HEX is "mssa_pic16f684.hex", for PIC12F683 HEX is "mssa_pic12f683.hex".
+For PIC16F684 HEX is "mssa_pic16f684.hex", for PIC12F683 HEX is "mssa_pic12f683.hex",<br/>
+for PIC16F676 HEX is "mssa_pic16f676.hex", for PIC12F675 HEX is "mssa_pic12f675.hex".
 
 Connections: For T-Cross (Switch module 1 in centre console, module EX23, 10 pins connector black),
 1. LED = PWM signal from Start/Stop LED, 200Hz duty cycle 20-90%  (pin 6).
