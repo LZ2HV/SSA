@@ -1,6 +1,6 @@
 	
- Start-Stop memory Module for MQB platforms as VW: T-CROSS, T-ROC, Polo, Taigo.
- PIC16F684 or PIC16F676 or PIC12F683 or PIC12F675, and similar. 
+ Start-Stop memory Module for MQB platforms as VW: T-CROSS, T-ROC, Polo, Taigo.<br/>
+ With a PIC16F684 or PIC16F676 or PIC12F683 or PIC12F675, from microchip and similar. 
  
 Requirements to compile and understanding:
 1. Compilator, CCS PCWHD v5.115.
