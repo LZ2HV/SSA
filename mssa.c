@@ -1,7 +1,7 @@
 /*
  * mssa.c
  * Description:
- * This is start/stop system memory, for the PIC16F684 and PIC12F675 chips.
+ * This is start/stop system memory, for the PIC16F684 or PIC12F683 or PIC12F675 chips.
  * Author: LZ2HV, Christo
  * Creation date: 2025 for VW T-Cross 2025
  */
@@ -37,7 +37,6 @@
 //#byte OSCTUNE = 0x90
 //#bit PLLEN=OSCTUNE.6 
  
-
 #if defined PIC16F684X
 #define BUT_SEC         (PIN_A4)
 #define SSA_LED         (PIN_A1)
@@ -79,7 +78,7 @@
 #define DEB_EXC_SAV_MIN (PIN_A5)//error PIN -2=PIN_A5 ????
 #endif
 
-BOOLEAN is_on_bssa(void)
+BOOLEAN is_on_ssa_led(void)
 {
     BOOLEAN res = false;
     int c_bssa = 0;
@@ -119,7 +118,7 @@ BOOLEAN wait1234sec(void)
     int count_except = 0;
     for (int i=0; i<read_sec; ++i)
     {
-        if (is_on_bssa())//full=200+0=200ms
+        if (is_on_ssa_led())//full=200ms
         {
             count_except++;
             if (count_except > DEF_ESEC)//except=(0+120=120)*11=1320ms //120*15=1800ms
@@ -136,9 +135,9 @@ BOOLEAN wait1234sec(void)
     {
         res = false;
         to = (DEF_ESEC+1)-count_except;
-        for (int i=0; i<to; ++i)//try times to 1320ms
+        for (int i=0; i<to; ++i)
         {
-            if (!is_on_bssa()) 
+            if (!is_on_ssa_led()) 
             {
                res = true;
                break;
@@ -148,7 +147,7 @@ BOOLEAN wait1234sec(void)
     output_low(DEB_EXC_SAV_MIN);
     return res;
 }
-void tray_to_on(void)
+void try_to_on(void)
 {
     output_high(DEB_EXC_SAV_MIN);
     output_high(SWI_OUT);
@@ -178,7 +177,7 @@ BOOLEAN f_b_sec = false;//button is up logic
 void refresh_read_button(void)
 {
     int tread_ssa = 2;
-    if (is_on_bssa()) tread_ssa = 3;
+    if (is_on_ssa_led()) tread_ssa = 3;
     if (tread_ssa != read_ssa)
     {
         save_ssa=1;
@@ -255,15 +254,15 @@ void main(void)
         delay_ms(50);
         read_sec = DEF_SEC;
     }      
-    int c_tray_on = 0;
+    int c_try_on = 0;
     int c_ss = 0;
     if (read_ssa == 3)
     {
         delay_ms(100);
         if (wait1234sec())
         {
-            tray_to_on();
-            c_tray_on=1;
+            try_to_on();
+            c_try_on=1;
         } 
     }
     if (read_ssa != 2 && read_ssa != 3)//first time 0xFF
@@ -289,12 +288,12 @@ void main(void)
            h=true; output_high(DEB_EXE);
         }*/
         delay_ms(50);//50+200=250ms
-        if (c_tray_on==0) refresh_read_button();//120 or 200
+        if (c_try_on==0) refresh_read_button();//120 or 200
         c_ss = COU_SAVE_SECL;
         if (read_ssa==3)
         {
             c_ss = COU_SAVE_SECH;
-            if (c_tray_on==0) delay_ms(80);//50+120+80=250ms
+            if (c_try_on==0) delay_ms(80);//50+120+80=250ms
         }
         if (save_ssa > c_ss)
         {
@@ -310,30 +309,30 @@ void main(void)
         }
         if (save_ssa > 0) save_ssa++;
 #if defined DEBUG_MAINN
-        if (save_ssa > 0 || c_tray_on > 0) f_main = 1;
-        if (f_main < 1 || save_ssa > 0 || c_tray_on > TRY_END) output_high(DEB_EXC_SAV_MIN);
+        if (save_ssa > 0 || c_try_on > 0) f_main = 1;
+        if (f_main < 1 || save_ssa > 0 || c_try_on > TRY_END) output_high(DEB_EXC_SAV_MIN);
         else output_low(DEB_EXC_SAV_MIN);
         if (f_main > 9) f_main = 0;
         else f_main++;
 #else
-        if (save_ssa > 0 || c_tray_on > TRY_END) output_high(DEB_EXC_SAV_MIN);
+        if (save_ssa > 0 || c_try_on > TRY_END) output_high(DEB_EXC_SAV_MIN);
         else output_low(DEB_EXC_SAV_MIN);
 #endif
-        if (c_tray_on > 0)
+        if (c_try_on > 0)
         {
-            if (is_on_bssa())
+            if (is_on_ssa_led())
             {
-                c_tray_on=0;
+                c_try_on=0;
 #if defined DEBUG_MAINN
                 f_main = 0;
                 output_low(DEB_EXC_SAV_MIN);
 #endif
             }
-            if (c_tray_on > 0 && c_tray_on < (TRY_END+1))
+            if (c_try_on > 0 && c_try_on < (TRY_END+1))
             {
-                if (c_tray_on==TRY_002) tray_to_on();
-                if (c_tray_on==TRY_003) tray_to_on();
-                c_tray_on++;
+                if (c_try_on==TRY_002) try_to_on();
+                if (c_try_on==TRY_003) try_to_on();
+                c_try_on++;
             }
         }
     }
