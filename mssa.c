@@ -11,7 +11,7 @@
 
 #define PIC16F684X
 //#define PIC16F676X
-//#define PIC12F683X  // ok as PIC12F675
+//#define PIC12F683X
 //#define PIC12F675X
 //#define PIC12F1571X //write_program_eeprom  read_program_eeprom
 
@@ -22,8 +22,7 @@
 #include <16f676.h>
 #endif
 #if defined PIC12F683X
-#include <12f683.h> //ok
-//#include <12f1571.h> //write_program_eeprom
+#include <12f683.h> //#include <12f1571.h> //write_program_eeprom
 #endif
 #if defined PIC12F675X
 #include <12f675.h>
