@@ -1,9 +1,9 @@
-CCS PCM C Compiler, Version 5.115, 43599               14-ўыш-26 09:27
+CCS PCM C Compiler, Version 5.115, 43599               14-ўыш-26 11:52
 
                Filename:   D:\Install\VW\Manuals\T-cross_2024_bf3\MemSSA\MemSSA_16f684_03000_2026\mssa.lst
 
-               ROM used:   565 words (28%)
-                           Largest free fragment is 1483
+               ROM used:   573 words (28%)
+                           Largest free fragment is 1475
                RAM used:   11 (9%) at main() level
                            22 (17%) worst case
                Stack used: 2 locations
@@ -889,53 +889,67 @@ CCS PCM C Compiler, Version 5.115, 43599               14-ўыш-26 09:27
 ....................         if (c_try_on > 0)
 0216:  MOVF   29,F
 0217:  BTFSC  03.2
-0218:  GOTO   233
+0218:  GOTO   23B
 ....................         {
-....................             if (is_on_ssa_led())
+....................             if (is_on_ssa_led())//first check 200ms or 160ms
 0219:  CALL   018
 021A:  MOVF   21,F
 021B:  BTFSC  03.2
-021C:  GOTO   223
+021C:  GOTO   22B
 ....................             {
-....................                 c_try_on=0;
-021D:  CLRF   29
+....................                 if (is_on_ssa_led())//second check 160+160=320ms
+021D:  CALL   018
+021E:  MOVF   21,F
+021F:  BTFSC  03.2
+0220:  GOTO   22B
+....................                 {
+....................                     if (is_on_ssa_led())//third check 160+160+160ms=480ms
+0221:  CALL   018
+0222:  MOVF   21,F
+0223:  BTFSC  03.2
+0224:  GOTO   22B
+....................                     {
+....................                         c_try_on=0;
+0225:  CLRF   29
 .................... #if defined DEBUG_MAINN
-....................                 f_main = 0;
-021E:  CLRF   27
-....................                 output_low(DEB_EXC_SAV_MIN);
-021F:  BSF    03.5
-0220:  BCF    07.2
-0221:  BCF    03.5
-0222:  BCF    07.2
-.................... #endif
+....................                         f_main = 0;
+0226:  CLRF   27
+....................                         output_low(DEB_EXC_SAV_MIN);
+0227:  BSF    03.5
+0228:  BCF    07.2
+0229:  BCF    03.5
+022A:  BCF    07.2
+.................... #endif                
+....................                     }
+....................                 }
 ....................             }
 ....................             if (c_try_on > 0 && c_try_on < (TRY_END+1))
-0223:  MOVF   29,F
-0224:  BTFSC  03.2
-0225:  GOTO   233
-0226:  MOVF   29,W
-0227:  SUBLW  22
-0228:  BTFSS  03.0
-0229:  GOTO   233
+022B:  MOVF   29,F
+022C:  BTFSC  03.2
+022D:  GOTO   23B
+022E:  MOVF   29,W
+022F:  SUBLW  22
+0230:  BTFSS  03.0
+0231:  GOTO   23B
 ....................             {
 ....................                 if (c_try_on==TRY_002) try_to_on();
-022A:  MOVF   29,W
-022B:  SUBLW  0E
-022C:  BTFSC  03.2
-022D:  CALL   094
+0232:  MOVF   29,W
+0233:  SUBLW  0E
+0234:  BTFSC  03.2
+0235:  CALL   094
 ....................                 if (c_try_on==TRY_003) try_to_on();
-022E:  MOVF   29,W
-022F:  SUBLW  18
-0230:  BTFSC  03.2
-0231:  CALL   094
+0236:  MOVF   29,W
+0237:  SUBLW  18
+0238:  BTFSC  03.2
+0239:  CALL   094
 ....................                 c_try_on++;
-0232:  INCF   29,F
+023A:  INCF   29,F
 ....................             }
 ....................         }
-0233:  GOTO   1BC
+023B:  GOTO   1BC
 ....................     }
 .................... }
-0234:  SLEEP
+023C:  SLEEP
 
 Configuration Fuses:
    Word  1: 3FC4   INTRC_IO NOWDT PUT NOMCLR NOPROTECT NOCPD BROWNOUT IESO FCMEN

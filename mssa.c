@@ -322,13 +322,19 @@ void main(void)
 #endif
         if (c_try_on > 0)
         {
-            if (is_on_ssa_led())
+            if (is_on_ssa_led())//first check 200ms or 160ms
             {
-                c_try_on=0;
+                if (is_on_ssa_led())//second check 160+160=320ms
+                {
+                    if (is_on_ssa_led())//third check 160+160+160ms=480ms
+                    {
+                        c_try_on=0;
 #if defined DEBUG_MAINN
-                f_main = 0;
-                output_low(DEB_EXC_SAV_MIN);
-#endif
+                        f_main = 0;
+                        output_low(DEB_EXC_SAV_MIN);
+#endif                
+                    }
+                }
             }
             if (c_try_on > 0 && c_try_on < (TRY_END+1))
             {
