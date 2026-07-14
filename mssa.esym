@@ -1,10 +1,9 @@
-F N "MAIN" 0 220 ""
-D G "__PCM__" 0 347 ""5.115""
-D G "__DEVICE__" 0 347 "684"
-D G "__DATE__" 0 347 ""07-Jul-26""
-D G "__TIME__" 0 347 ""10:30:37""
-D G "_UNICODE" 0 347 ""?""
-D G "__EVAL" 0 347 ""?"" "* mssa.c"
+D G "__PCM__" 0 343 ""5.115""
+D G "__DEVICE__" 0 343 "684"
+D G "__DATE__" 0 343 ""14-Jul-26""
+D G "__TIME__" 0 343 ""09:27:48""
+D G "_UNICODE" 0 343 ""?""
+D G "__EVAL" 0 343 ""?"" "* mssa.c"
 C G "" 0 1 1 "*"
 C G "" 0 1 1 "*"
 C G "" 0 1 1 "*"
@@ -1063,71 +1062,71 @@ D G "INT_RA2" 1 650 "0x0040B08"
 D G "INT_RA3" 1 651 "0x0080B08"
 D G "INT_RA4" 1 652 "0x0100B08"
 D G "INT_RA5" 1 653 "0x0200B08"
-D G "BUT_SEC" 0 45 " (PIN_A4)"
-D G "SSA_LED" 0 46 " (PIN_A1)"
-D G "SWI_OUT" 0 47 " (PIN_C0)"
-D G "DEB_WRI" 0 48 " (PIN_C4)"
-D G "DEB_EXE" 0 49 " (PIN_C3)"
-D G "DEB_EXC_SAV_MIN" 0 50 " (PIN_C2)"
-D G "A05_MMM" 0 51 " (PIN_A5)"
-D G "COU_SAVE_SECL" 0 63 "15" "16-1//17*150+17*100=2550+1700=4250s"
-D G "COU_SAVE_SECH" 0 64 "2" "3=750 4*170+4*80=680+320=1000  8*158+8*92=1264+736=2000s"
-D G "MAX_SEC" 0 69 "40" "40=40*200=8s"
-D G "MIN_SEC" 0 70 "10" "10=10*200=2s"
-D G "DEF_SEC" 0 71 "30" "30=30*200=6s"
-D G "DEF_ESEC" 0 79 "16" "old=10"
-D G "TRY_002" 0 81 "14" "14=3500ms"
-D G "TRY_003" 0 82 "24" "24=6000ms"
-D G "TRY_END" 0 83 "34" "34=8500ms"
-F N "is_on_ssa_led" 0 85 ""
-F G "is_on_ssa_led" 0 86 "int8()" `629 
-V L "res" 0 87 "int1" `630 
-V L "c_bssa" 0 88 "int8" `631 
-V L "to" 0 89 "int8" `632 
-V L "i" 0 90 "int8" `633 
-C L "is_on_ssa_led" 0 32 1 "FUNCTION"
-C L "is_on_ssa_led" 0 32 1 "FUNCTION"
-V L "i" 0 105 "int8" `634 
-V G "read_sec" 0 117 "int8" `635 
-F N "wait1234sec" 0 118 ""
-F G "wait1234sec" 0 119 "int8()" `636 
-V L "res" 0 120 "int1" `637 
-V L "to" 0 121 "int8" `638 
-V L "count_except" 0 122 "int8" `639 
-V L "i" 0 123 "int8" `640 
-C L "wait1234sec" 0 32 1 "FUNCTION"
-C L "wait1234sec" 0 32 1 "FUNCTION"
-V L "i" 0 142 "int8" `641 
-F N "try_to_on" 0 154 ""
-F G "try_to_on" 0 155 "void()" `642 
-F N "led_flash" 0 163 ""
-V L "z" 0 163 "int8" `644 
-F G "led_flash" 0 164 "void(int8 z)" `643 
-V L "i" 0 165 "int8" `645 
-V G "read_ssa" 0 175 "int8" `646 
-V G "save_ssa" 0 176 "int8" `647 
-V G "f_main" 0 178 "int8" `648 
-V G "f_b_sec" 0 180 "int1" `649 
-C L "refresh_read_button" 0 32 1 "FUNCTION"
-F N "refresh_read_button" 0 181 ""
-F G "refresh_read_button" 0 182 "void()" `650 
-V L "tread_ssa" 0 183 "int8" `651 
-V L "cflash" 0 207 "int8" `652 
-F N "MAIN" 0 220 ""
-F G "MAIN" 0 221 "void()" `656  "Initialization *"
-C L "MAIN" 0 32 1 "FUNCTION"
-C L "MAIN" 0 32 1 "FUNCTION"
-C L "MAIN" 0 32 3 "FUNCTION"
-C L "MAIN" 0 32 1 "FUNCTION"
-V L "c_try_on" 0 263 "int8" `659 
-V L "c_ss" 0 264 "int8" `660 
-C L "MAIN" 0 32 1 "FUNCTION"
-C L "MAIN" 0 32 1 "FUNCTION"
-C L "MAIN" 0 32 5 "FUNCTION"
-C L "MAIN" 0 32 1 "FUNCTION"
-C L "MAIN" 0 32 1 "FUNCTION"
-C L "MAIN" 0 32 1 "FUNCTION"
-C L "MAIN" 0 32 1 "FUNCTION"
+D G "BUT_SEC" 0 43 " (PIN_A4)"
+D G "SSA_LED" 0 44 " (PIN_A1)"
+D G "SWI_OUT" 0 45 " (PIN_C0)"
+D G "DEB_WRI" 0 46 " (PIN_C4)"
+D G "DEB_EXE" 0 47 " (PIN_C3)"
+D G "DEB_EXC_SAV_MIN" 0 48 " (PIN_C2)"
+D G "A05_MMM" 0 49 " (PIN_A5)"
+D G "COU_SAVE_SECL" 0 61 "15" "16-1=4s"
+D G "COU_SAVE_SECH" 0 62 "2" "3=750ms"
+D G "MAX_SEC" 0 67 "40" "40=40*200=8s"
+D G "MIN_SEC" 0 68 "10" "10=10*200=2s"
+D G "DEF_SEC" 0 69 "30" "30=30*200=6s"
+D G "DEF_ESEC" 0 75 "12"
+D G "TRY_002" 0 77 "14" "14=3500ms"
+D G "TRY_003" 0 78 "24" "24=6000ms"
+D G "TRY_END" 0 79 "34" "34=8500ms"
+F N "is_on_ssa_led" 0 81 ""
+F G "is_on_ssa_led" 0 82 "int8()" `629 
+V L "res" 0 83 "int1" `630 
+V L "c_bssa" 0 84 "int8" `631 
+V L "to" 0 85 "int8" `632 
+V L "i" 0 86 "int8" `633 
+C L "is_on_ssa_led" 0 30 1 "FUNCTION"
+C L "is_on_ssa_led" 0 30 1 "FUNCTION"
+V L "i" 0 101 "int8" `634 
+V G "read_sec" 0 113 "int8" `635 
+F N "wait1234sec" 0 114 ""
+F G "wait1234sec" 0 115 "int8()" `636 
+V L "res" 0 116 "int1" `637 
+V L "to" 0 117 "int8" `638 
+V L "count_except" 0 118 "int8" `639 
+V L "i" 0 119 "int8" `640 
+C L "wait1234sec" 0 30 1 "FUNCTION"
+C L "wait1234sec" 0 30 1 "FUNCTION"
+V L "i" 0 138 "int8" `641 
+F N "try_to_on" 0 150 ""
+F G "try_to_on" 0 151 "void()" `642 
+F N "led_flash" 0 159 ""
+V L "z" 0 159 "int8" `644 
+F G "led_flash" 0 160 "void(int8 z)" `643 
+V L "i" 0 161 "int8" `645 
+V G "read_ssa" 0 171 "int8" `646 
+V G "save_ssa" 0 172 "int8" `647 
+V G "f_main" 0 174 "int8" `648 
+V G "f_b_sec" 0 176 "int1" `649 
+C L "refresh_read_button" 0 30 1 "FUNCTION"
+F N "refresh_read_button" 0 177 ""
+F G "refresh_read_button" 0 178 "void()" `650 
+V L "tread_ssa" 0 179 "int8" `651 
+V L "cflash" 0 203 "int8" `652 
+F N "MAIN" 0 216 ""
+F G "MAIN" 0 217 "void()" `656  "Initialization *"
+C L "MAIN" 0 30 1 "FUNCTION"
+C L "MAIN" 0 30 1 "FUNCTION"
+C L "MAIN" 0 30 3 "FUNCTION"
+C L "MAIN" 0 30 1 "FUNCTION"
+V L "c_try_on" 0 259 "int8" `659 
+V L "c_ss" 0 260 "int8" `660 
+C L "MAIN" 0 30 1 "FUNCTION"
+C L "MAIN" 0 30 1 "FUNCTION"
+C L "MAIN" 0 30 5 "FUNCTION"
+C L "MAIN" 0 30 1 "FUNCTION"
+C L "MAIN" 0 30 1 "FUNCTION"
+C L "MAIN" 0 30 1 "FUNCTION"
+C L "MAIN" 0 30 1 "FUNCTION"
 F B "reset_cpu" 0 0
 F B "abs" 1 0
 F B "sleep_ulpwu" 1 0

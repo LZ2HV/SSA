@@ -13,7 +13,6 @@
 //#define PIC16F676X
 //#define PIC12F683X
 //#define PIC12F675X
-//#define PIC12F1571X //write_program_eeprom  read_program_eeprom
 
 #if defined PIC16F684X
 #include <16f684.h>
@@ -22,7 +21,7 @@
 #include <16f676.h>
 #endif
 #if defined PIC12F683X
-#include <12f683.h> //#include <12f1571.h> //write_program_eeprom
+#include <12f683.h>
 #endif
 #if defined PIC12F675X
 #include <12f675.h>
@@ -59,8 +58,8 @@
 #define DEB_EXC_SAV_MIN (PIN_A5)//error PIN -2=PIN_A5 ???
 #endif
 
-#define COU_SAVE_SECL 15  //16-1//17*150+17*100=2550+1700=4250s
-#define COU_SAVE_SECH 2   //3=750 4*170+4*80=680+320=1000  8*158+8*92=1264+736=2000s
+#define COU_SAVE_SECL 15  //16-1=4s
+#define COU_SAVE_SECH 2   //3=750ms
 /*#define MAX_SSEC 24 //24=6s
 #define MIN_SSEC 4  //4=1s
 #define DEF_SSEC 16 //16=4s*/
@@ -69,13 +68,11 @@
 #define MIN_SEC 10 //10=10*200=2s
 #define DEF_SEC 30 //30=30*200=6s
 
-/*#define MAX_ESEC 20 //120*21=2520ms = 4-flashing
-//     18           //120*19=2280ms = 3-flashing
-//     16           //120*17=2040ms = 2-flashing
-#define MIN_ESEC 14 //120*15=1800ms = 1-flashing
-//#define MIN_ESEC 12 //120*13=1560ms
-//#define MIN_ESEC 10 //120*11=1320ms*/
-#define DEF_ESEC 16 //old=10
+/*#define MAX_ESEC 16 //160*17=2720ms = 4-flashing
+//     14           //160*15=2400ms = 3-flashing
+//     12           //160*13=2080ms = 2-flashing
+#define MIN_ESEC 10 //160*11=1760ms = 1-flashing*/
+#define DEF_ESEC 12 
 
 #define TRY_002 14 //14=3500ms
 #define TRY_003 24 //24=6000ms
@@ -91,7 +88,7 @@ BOOLEAN is_on_ssa_led(void)
         delay_ms(10);    
         if (!input(SSA_LED)) c_bssa++;
         else c_bssa = 0;
-        if (c_bssa > 12)//120ms
+        if (c_bssa > 16)//160ms
         {
             res = true;
             break;
@@ -100,7 +97,7 @@ BOOLEAN is_on_ssa_led(void)
     if (!res && c_bssa > 0)
     {
         res = true;
-        to = 13 - c_bssa;
+        to = 17 - c_bssa;
         for (int i=0; i<to; ++i)
         {
             delay_ms(10);        
@@ -124,7 +121,7 @@ BOOLEAN wait1234sec(void)
         if (is_on_ssa_led())//full=200ms
         {
             count_except++;
-            if (count_except > DEF_ESEC)//except=(0+120=120)*11=1320ms //120*15=1800ms
+            if (count_except > DEF_ESEC)//160*13=2080ms
             {
                 res = false;
                 break;
@@ -293,12 +290,12 @@ void main(void)
            h=true; output_high(DEB_EXE);
         }*/
         delay_ms(50);//50+200=250ms
-        if (c_try_on==0) refresh_read_button();//120 or 200
+        if (c_try_on==0) refresh_read_button();//160 or 200
         c_ss = COU_SAVE_SECL;
         if (read_ssa==3)
         {
             c_ss = COU_SAVE_SECH;
-            if (c_try_on==0) delay_ms(80);//50+120+80=250ms
+            if (c_try_on==0) delay_ms(40);//50+160+40=250ms
         }
         if (save_ssa > c_ss)
         {

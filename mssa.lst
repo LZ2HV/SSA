@@ -1,4 +1,4 @@
-CCS PCM C Compiler, Version 5.115, 43599               07-ўыш-26 10:30
+CCS PCM C Compiler, Version 5.115, 43599               14-ўыш-26 09:27
 
                Filename:   D:\Install\VW\Manuals\T-cross_2024_bf3\MemSSA\MemSSA_16f684_03000_2026\mssa.lst
 
@@ -27,9 +27,8 @@ CCS PCM C Compiler, Version 5.115, 43599               07-ўыш-26 10:30
 .................... 
 .................... #define PIC16F684X
 .................... //#define PIC16F676X
-.................... //#define PIC12F683X  // ok as PIC12F675
+.................... //#define PIC12F683X
 .................... //#define PIC12F675X
-.................... //#define PIC12F1571X //write_program_eeprom  read_program_eeprom
 .................... 
 .................... #if defined PIC16F684X
 .................... #include <16f684.h>
@@ -73,8 +72,7 @@ CCS PCM C Compiler, Version 5.115, 43599               07-ўыш-26 10:30
 .................... #include <16f676.h>
 .................... #endif
 .................... #if defined PIC12F683X
-.................... #include <12f683.h> //ok
-.................... //#include <12f1571.h> //write_program_eeprom
+.................... #include <12f683.h>
 .................... #endif
 .................... #if defined PIC12F675X
 .................... #include <12f675.h>
@@ -132,8 +130,8 @@ CCS PCM C Compiler, Version 5.115, 43599               07-ўыш-26 10:30
 .................... #define DEB_EXC_SAV_MIN (PIN_A5)//error PIN -2=PIN_A5 ???
 .................... #endif
 .................... 
-.................... #define COU_SAVE_SECL 15  //16-1//17*150+17*100=2550+1700=4250s
-.................... #define COU_SAVE_SECH 2   //3=750 4*170+4*80=680+320=1000  8*158+8*92=1264+736=2000s
+.................... #define COU_SAVE_SECL 15  //16-1=4s
+.................... #define COU_SAVE_SECH 2   //3=750ms
 .................... /*#define MAX_SSEC 24 //24=6s
 .................... #define MIN_SSEC 4  //4=1s
 .................... #define DEF_SSEC 16 //16=4s*/
@@ -142,13 +140,11 @@ CCS PCM C Compiler, Version 5.115, 43599               07-ўыш-26 10:30
 .................... #define MIN_SEC 10 //10=10*200=2s
 .................... #define DEF_SEC 30 //30=30*200=6s
 .................... 
-.................... /*#define MAX_ESEC 20 //120*21=2520ms = 4-flashing
-.................... //     18           //120*19=2280ms = 3-flashing
-.................... //     16           //120*17=2040ms = 2-flashing
-.................... #define MIN_ESEC 14 //120*15=1800ms = 1-flashing
-.................... //#define MIN_ESEC 12 //120*13=1560ms
-.................... //#define MIN_ESEC 10 //120*11=1320ms*/
-.................... #define DEF_ESEC 16 //old=10
+.................... /*#define MAX_ESEC 16 //160*17=2720ms = 4-flashing
+.................... //     14           //160*15=2400ms = 3-flashing
+.................... //     12           //160*13=2080ms = 2-flashing
+.................... #define MIN_ESEC 10 //160*11=1760ms = 1-flashing*/
+.................... #define DEF_ESEC 12 
 .................... 
 .................... #define TRY_002 14 //14=3500ms
 .................... #define TRY_003 24 //24=6000ms
@@ -183,9 +179,9 @@ CCS PCM C Compiler, Version 5.115, 43599               07-ўыш-26 10:30
 0029:  GOTO   02B
 ....................         else c_bssa = 0;
 002A:  CLRF   31
-....................         if (c_bssa > 12)//120ms
+....................         if (c_bssa > 16)//160ms
 002B:  MOVF   31,W
-002C:  SUBLW  0C
+002C:  SUBLW  10
 002D:  BTFSC  03.0
 002E:  GOTO   031
 ....................         {
@@ -206,9 +202,9 @@ CCS PCM C Compiler, Version 5.115, 43599               07-ўыш-26 10:30
 ....................     {
 ....................         res = true;
 0038:  BSF    30.0
-....................         to = 13 - c_bssa;
+....................         to = 17 - c_bssa;
 0039:  MOVF   31,W
-003A:  SUBLW  0D
+003A:  SUBLW  11
 003B:  MOVWF  32
 ....................         for (int i=0; i<to; ++i)
 003C:  CLRF   34
@@ -268,9 +264,9 @@ CCS PCM C Compiler, Version 5.115, 43599               07-ўыш-26 10:30
 ....................         {
 ....................             count_except++;
 005E:  INCF   2D,F
-....................             if (count_except > DEF_ESEC)//except=(0+120=120)*11=1320ms //120*15=1800ms
+....................             if (count_except > DEF_ESEC)//160*13=2080ms
 005F:  MOVF   2D,W
-0060:  SUBLW  10
+0060:  SUBLW  0C
 0061:  BTFSC  03.0
 0062:  GOTO   065
 ....................             {
@@ -311,7 +307,7 @@ CCS PCM C Compiler, Version 5.115, 43599               07-ўыш-26 10:30
 007A:  BCF    2B.0
 ....................         to = (DEF_ESEC+1)-count_except;
 007B:  MOVF   2D,W
-007C:  SUBLW  11
+007C:  SUBLW  0D
 007D:  MOVWF  2C
 ....................         for (int i=0; i<to; ++i)
 007E:  CLRF   2F
@@ -773,7 +769,7 @@ CCS PCM C Compiler, Version 5.115, 43599               07-ўыш-26 10:30
 01BC:  MOVLW  32
 01BD:  MOVWF  35
 01BE:  CALL   004
-....................         if (c_try_on==0) refresh_read_button();//120 or 200
+....................         if (c_try_on==0) refresh_read_button();//160 or 200
 01BF:  MOVF   29,F
 01C0:  BTFSC  03.2
 01C1:  GOTO   0AB
@@ -789,11 +785,11 @@ CCS PCM C Compiler, Version 5.115, 43599               07-ўыш-26 10:30
 ....................             c_ss = COU_SAVE_SECH;
 01C8:  MOVLW  02
 01C9:  MOVWF  2A
-....................             if (c_try_on==0) delay_ms(80);//50+120+80=250ms
+....................             if (c_try_on==0) delay_ms(40);//50+160+40=250ms
 01CA:  MOVF   29,F
 01CB:  BTFSS  03.2
 01CC:  GOTO   1D0
-01CD:  MOVLW  50
+01CD:  MOVLW  28
 01CE:  MOVWF  35
 01CF:  CALL   004
 ....................         }
