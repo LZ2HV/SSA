@@ -14,26 +14,29 @@
 026     save_ssa
 027     f_main
 028.0   f_b_sec
-029     MAIN.c_try_on
-02A     MAIN.c_ss
-02B     refresh_read_button.tread_ssa
-02B.0   wait1234sec.res
-02C     refresh_read_button.cflash
-02C     wait1234sec.to
-02D     led_flash.z
-02D     @DIV88.P1
-02D     wait1234sec.count_except
-02E     wait1234sec.i
-02E     led_flash.i
-02E     @DIV88.P1
-02F     wait1234sec.i
-02F     @DIV88.@SCRATCH1
-030.0   is_on_ssa_led.res
-031     is_on_ssa_led.c_bssa
-032     is_on_ssa_led.to
-033     is_on_ssa_led.i
-034     is_on_ssa_led.i
-035     @delay_ms1.P1
+029     MAIN.prev_write_ssa
+02A.0   MAIN.is_try_on
+02B     MAIN.c_try_on
+02C     MAIN.c_ss
+02D     MAIN.i
+02E.0   wait1234sec.res
+02E     refresh_read_button.tread_ssa
+02F     refresh_read_button.cflash
+02F     wait1234sec.to
+030     wait1234sec.count_except
+030     led_flash.z
+030     @DIV88.P1
+031     wait1234sec.i
+031     led_flash.i
+031     @DIV88.P1
+032     wait1234sec.i
+032     @DIV88.@SCRATCH1
+033.0   is_on_ssa_led.res
+034     is_on_ssa_led.c_bssa
+035     is_on_ssa_led.to
+036     is_on_ssa_led.i
+037     is_on_ssa_led.i
+038     @delay_ms1.P1
 09B-09C @READ_PROGRAM_MEMORY8.P1
 
 ROM Allocation:
@@ -52,12 +55,12 @@ Project Directory:
     D:\Install\VW\Manuals\T-cross_2024_bf3\MemSSA\MemSSA_16f684_03000_2026\
 
 Project Files:
-    mssa.c                                                  [14-юли-26 11:52  CRC=116ACC13]
+    mssa.c                                                  [15-юли-26 09:41  CRC=98F7E576]
     ..\..\..\..\..\..\PICC_5115\Devices\16f684.h            [07-мар-23 19:18  CRC=80E9E0D1]
 
-Source signature=133E8DB5
+Source signature=9ACBA718
 Program memory checksum=0000
-Hex file CRC=F0C7
+Hex file CRC=8607
 
 Units:
     D:\Install\VW\Manuals\T-cross_2024_bf3\MemSSA\MemSSA_16f684_03000_2026\mssa (main)

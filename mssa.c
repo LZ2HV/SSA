@@ -58,21 +58,30 @@
 #define DEB_EXC_SAV_MIN (PIN_A5)//error PIN -2=PIN_A5 ???
 #endif
 
+#define MAX_SEC 40 //40=40*200=8s
+#define MIN_SEC 10 //10=10*200=2s
+#define DEF_SEC 30 //30=30*200=6s
+
 #define COU_SAVE_SECL 15  //16-1=4s
 #define COU_SAVE_SECH 2   //3=750ms
 /*#define MAX_SSEC 24 //24=6s
 #define MIN_SSEC 4  //4=1s
 #define DEF_SSEC 16 //16=4s*/
 
-#define MAX_SEC 40 //40=40*200=8s
-#define MIN_SEC 10 //10=10*200=2s
-#define DEF_SEC 30 //30=30*200=6s
-
 /*#define MAX_ESEC 16 //160*17=2720ms = 4-flashing
 //     14           //160*15=2400ms = 3-flashing
 //     12           //160*13=2080ms = 2-flashing
 #define MIN_ESEC 10 //160*11=1760ms = 1-flashing*/
 #define DEF_ESEC 12 
+
+/*#define MAX_TCHK 7 //7-flashing =1120ms
+//      6          //6-flashing =960ms
+//      5          //5-flashing =800ms
+//      4          //4-flashing =640ms
+//      3          //3-flashing =480ms
+//      2          //2-flashing =320ms
+#define MIN_TCHK 1 //1-flashing =200ms-160ms*/
+#define DEF_TCHK 3
 
 #define TRY_002 14 //14=3500ms
 #define TRY_003 24 //24=6000ms
@@ -247,6 +256,7 @@ void main(void)
     delay_ms(200);
     delay_ms(200);
     read_ssa = read_eeprom(0);
+    int prev_write_ssa = read_ssa;
     delay_ms(20);
     read_sec = read_eeprom(1);
     delay_ms(20);
@@ -255,7 +265,8 @@ void main(void)
         write_eeprom(1,DEF_SEC);//20=1s 40=2s 60=3s 80=4s 100=5s 120=6s
         delay_ms(50);
         read_sec = DEF_SEC;
-    }      
+    }    
+    BOOLEAN is_try_on = true;
     int c_try_on = 0;
     int c_ss = 0;
     if (read_ssa == 3)
@@ -272,6 +283,7 @@ void main(void)
         write_eeprom(0,2);
         delay_ms(50);
         read_ssa = 2;
+        prev_write_ssa = 2;
 #if defined DEBUG_WRITE
         output_high(DEB_WRI);
         delay_ms(100);
@@ -300,14 +312,18 @@ void main(void)
         if (save_ssa > c_ss)
         {
             save_ssa=0;
-            delay_ms(100);//old=100
-            write_eeprom(0,read_ssa);
-            delay_ms(50);
+            if (prev_write_ssa!=read_ssa)
+            {
+                prev_write_ssa = read_ssa;            
+                delay_ms(100);//old=100
+                write_eeprom(0,read_ssa);
+                delay_ms(50);
 #if defined DEBUG_WRITE
-            output_high(DEB_WRI);
-            delay_ms(200);
-            output_low(DEB_WRI);
+                output_high(DEB_WRI);
+                delay_ms(200);
+                output_low(DEB_WRI);
 #endif
+            }
         }
         if (save_ssa > 0) save_ssa++;
 #if defined DEBUG_MAINN
@@ -322,19 +338,22 @@ void main(void)
 #endif
         if (c_try_on > 0)
         {
-            if (is_on_ssa_led())//first check 200ms or 160ms
+            is_try_on = true;
+            for (int i=0; i<DEF_TCHK; ++i)
             {
-                if (is_on_ssa_led())//second check 160+160=320ms
+                if (!is_on_ssa_led())
                 {
-                    if (is_on_ssa_led())//third check 160+160+160ms=480ms
-                    {
-                        c_try_on=0;
-#if defined DEBUG_MAINN
-                        f_main = 0;
-                        output_low(DEB_EXC_SAV_MIN);
-#endif                
-                    }
+                    is_try_on = false;
+                    break;
                 }
+            }
+            if (is_try_on)
+            {
+                 c_try_on=0;
+#if defined DEBUG_MAINN
+                 f_main = 0;
+                 output_low(DEB_EXC_SAV_MIN);
+#endif             
             }
             if (c_try_on > 0 && c_try_on < (TRY_END+1))
             {
