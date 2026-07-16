@@ -1,10 +1,12 @@
 /*
  * mssa.c
  * Description:
- * This is start/stop system memory, for the PIC16F684 or PIC16F676 or PIC12F683 or PIC12F675 chips.
+ * This is start/stop system memory, for the PIC16F684 or PIC16F676 or PIC12F683 or PIC12F675. 
+*  The PIC12F1572 and PIC12F1571 chips have not been tested in a real device.
  * Author: LZ2HV, Christo
  * Creation date: 2025 for VW T-Cross 2025
  */
+
 //#define DEBUG_WRITE
 //#define DEBUG_EXCEP
 #define DEBUG_MAINN
@@ -13,6 +15,10 @@
 //#define PIC16F676X
 //#define PIC12F683X
 //#define PIC12F675X
+////////////// Not Tested Section on real device /////////////////////////////
+//#define PIC12F1572X
+//#define PIC12F1571X
+////////////// END Not Tested Section on real device /////////////////////////
 
 #if defined PIC16F684X
 #include <16f684.h>
@@ -26,18 +32,28 @@
 #if defined PIC12F675X
 #include <12f675.h>
 #endif
+#if defined PIC12F1572X
+#include <12f1572.h>
+#define RWPER
+#define BUFFER_SIZE           16
+#define PROGRAM_MEMORY_SIZE   getenv("PROGRAM_MEMORY")
+#define Storage          (PROGRAM_MEMORY_SIZE-BUFFER_SIZE)
+#endif
+#if defined PIC12F1571X
+#include <12f1571.h>
+#define RWPER
+#define BUFFER_SIZE           16
+#define PROGRAM_MEMORY_SIZE   getenv("PROGRAM_MEMORY")
+#define Storage          (PROGRAM_MEMORY_SIZE-BUFFER_SIZE)
+#endif
 
 /* Microcontroller configuration bits */
-//#byte OSCCON=0x8F
-//#use delay(internal=4MHz)
+#if (defined(PIC12F1572X)||defined(PIC12F1571X))
+#fuses INTRC_IO,NOPROTECT,NOWDT,BROWNOUT,PUT,NOMCLR
+#else
 #fuses INTRC_IO,NOPROTECT,NOWDT,BROWNOUT,PUT,NOMCLR,NOCPD
+#endif
 #use delay(clock=4000000)
-//#use fixed_io(a_outputs=PIN_A3)
-//INTRC_IO, NOWDT, NOPROTECT, BROWNOUT, NOMCLR, NOCPD
-//#BYTE OSCCON = 0xFd3
-//#use delay(clock=4000000)
-//#byte OSCTUNE = 0x90
-//#bit PLLEN=OSCTUNE.6 
  
 #if (defined(PIC16F684X)||defined(PIC16F676X))
 #define BUT_SEC         (PIN_A4)
@@ -49,7 +65,7 @@
 #define A05_MMM         (PIN_A5)
 #endif
 
-#if (defined(PIC12F683X)||defined(PIC12F675X))
+#if (defined(PIC12F683X)||defined(PIC12F675X)||defined(PIC12F1572X)||defined(PIC12F1571X))
 #define BUT_SEC         (PIN_A2)
 #define SSA_LED         (PIN_A0)
 #define SWI_OUT         (PIN_A1)
@@ -177,12 +193,22 @@ void led_flash(int z)
     output_low(DEB_EXC_SAV_MIN);
     delay_ms(200);
 }
+void write_eeprom_(int addr,int val)
+{
+#if defined RWPER
+    unsigned int16 addr16 = Storage + addr;
+    unsigned int16 v16 = (unsigned int16)val;
+    write_program_eeprom(addr16,v16);
+#else
+    write_eeprom(addr,val);
+#endif
+}
 int read_ssa = 0;
 int save_ssa = 0;
 #if defined DEBUG_MAINN
 int f_main = 0;
 #endif
-BOOLEAN f_b_sec = false;//button is up logic
+BOOLEAN f_b_sec = false;
 void refresh_read_button(void)
 {
     int tread_ssa = 2;
@@ -208,7 +234,7 @@ void refresh_read_button(void)
             f_b_sec = false;
             if (read_sec>=MAX_SEC) read_sec = MIN_SEC;
             else read_sec += 5;
-            write_eeprom(1,read_sec);
+            write_eeprom_(1,read_sec);
             int cflash = read_sec/5;
             led_flash(cflash);
 #if defined DEBUG_MAINN
@@ -221,6 +247,15 @@ void refresh_read_button(void)
 #endif
         }
     }
+}
+int read_eeprom_(int addr)
+{
+#if defined RWPER
+    unsigned int16 addr16 = (Storage + addr);
+    return (int)read_program_eeprom(addr16);
+#else
+    return read_eeprom(addr);
+#endif
 }
 void main(void)
 {
@@ -235,11 +270,11 @@ void main(void)
     output_low(A05_MMM);
 #endif
 
-#if (defined(PIC12F683X)||defined(PIC12F675X))  // inputs=1 output=0 (bitove-> 0b_76543210_ )
+#if (defined(PIC12F683X)||defined(PIC12F675X)||defined(PIC12F1572X)||defined(PIC12F1571X))  // inputs=1 output=0 (bitove-> 0b_76543210_ )
     //setup_adc_ports(NO_ANALOGS);
     //setup_comparator(NC_NC);
     //OSCTUNE = 0x00;
-#if defined(PIC12F683X)
+#if (defined(PIC12F683X||defined(PIC12F1572X)||defined(PIC12F1571X))
     setup_oscillator(OSC_4MHZ);//setup_oscillator(OSC_INTRC | OSC_4MHZ);
 #endif  
     //OSCTUNE = 0x00;
@@ -250,19 +285,19 @@ void main(void)
     //output_low(DEB_EXE);
     output_low(DEB_EXC_SAV_MIN);
 #endif
-    /*write_eeprom(0,0xff);//reset
-    write_eeprom(1,0xff);
+    /*write_eeprom_(0,0xff);//reset
+    write_eeprom_(1,0xff);
     return;*/
     delay_ms(200);
     delay_ms(200);
-    read_ssa = read_eeprom(0);
+    read_ssa = read_eeprom_(0);
     int prev_write_ssa = read_ssa;
     delay_ms(20);
-    read_sec = read_eeprom(1);
+    read_sec = read_eeprom_(1);
     delay_ms(20);
     if (read_sec<MIN_SEC || read_sec>MAX_SEC)
     {
-        write_eeprom(1,DEF_SEC);//20=1s 40=2s 60=3s 80=4s 100=5s 120=6s
+        write_eeprom_(1,DEF_SEC);//20=1s 40=2s 60=3s 80=4s 100=5s 120=6s
         delay_ms(50);
         read_sec = DEF_SEC;
     }    
@@ -280,7 +315,7 @@ void main(void)
     }
     if (read_ssa != 2 && read_ssa != 3)//first time 0xFF
     {
-        write_eeprom(0,2);
+        write_eeprom_(0,2);
         delay_ms(50);
         read_ssa = 2;
         prev_write_ssa = 2;
@@ -290,17 +325,8 @@ void main(void)
         output_low(DEB_WRI);
 #endif
     }
-    //BOOLEAN h=false;//test cycle=250ms every time
     while (TRUE)
     {
-        /*if (h)
-        {
-           h=false; output_low(DEB_EXE);
-        }
-        else
-        {
-           h=true; output_high(DEB_EXE);
-        }*/
         delay_ms(50);//50+200=250ms
         if (c_try_on==0) refresh_read_button();//160 or 200
         c_ss = COU_SAVE_SECL;
@@ -315,8 +341,8 @@ void main(void)
             if (prev_write_ssa!=read_ssa)
             {
                 prev_write_ssa = read_ssa;            
-                delay_ms(100);//old=100
-                write_eeprom(0,read_ssa);
+                delay_ms(100);
+                write_eeprom_(0,read_ssa);
                 delay_ms(50);
 #if defined DEBUG_WRITE
                 output_high(DEB_WRI);
@@ -350,9 +376,9 @@ void main(void)
             if (is_try_on)
             {
                  c_try_on=0;
+                 output_low(DEB_EXC_SAV_MIN);
 #if defined DEBUG_MAINN
                  f_main = 0;
-                 output_low(DEB_EXC_SAV_MIN);
 #endif             
             }
             if (c_try_on > 0 && c_try_on < (TRY_END+1))
