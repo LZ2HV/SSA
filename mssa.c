@@ -1,8 +1,8 @@
 /*
  * mssa.c
  * Description:
- * This is start/stop system memory, for the PIC16F684 or PIC16F676 or PIC12F683 or PIC12F675. 
-*  The PIC12F1572 and PIC12F1571 chips have not been tested in a real device.
+ * This is start/stop system memory, for the PIC16F684 or PIC16F676 or PIC12F683 or PIC12F675 chips. 
+ * The PIC12F1572 and PIC12F1571 chips have not been tested on a real device.
  * Author: LZ2HV, Christo
  * Creation date: 2025 for VW T-Cross 2025
  */
@@ -270,7 +270,7 @@ void main(void)
     output_low(A05_MMM);
 #endif
 
-#if (defined(PIC12F683X)||defined(PIC12F675X)||defined(PIC12F1572X)||defined(PIC12F1571X))  // inputs=1 output=0 (bitove-> 0b_76543210_ )
+#if (defined(PIC12F683X)||defined(PIC12F675X)||defined(PIC12F1572X)||defined(PIC12F1571X))
     //setup_adc_ports(NO_ANALOGS);
     //setup_comparator(NC_NC);
     //OSCTUNE = 0x00;
@@ -279,7 +279,7 @@ void main(void)
 #endif  
     //OSCTUNE = 0x00;
     //setup_oscillator(OSC_INTRC|OSC_4MHz,0);
-    set_tris_a(0b00000101);
+    set_tris_a(0b00000101);// inputs=1 output=0 (bitove-> 0b_76543210_ )
     output_low(SWI_OUT);
     output_low(DEB_WRI);
     //output_low(DEB_EXE);
