@@ -47,5 +47,7 @@ Schematics and boards is in directory "sch", thers have three variants, two with
 ![Bottom](https://github.com/LZ2HV/SSA/blob/8d450ef0e1181f4ad6d813e0298386c6cf3a97b7/pic/bott16dip.png)<br/>
 ![Sch](https://github.com/LZ2HV/SSA/blob/9af92bbd12c704825a600c717d9a045e55b9f95b/pic/sch16.png)
 
-<strong>Prototype: In My VW T-Cross 2025</strong><br/>
-![Sch](https://github.com/LZ2HV/SSA/blob/aa41d21a928631c7bed4fb28985d4fc1029c4b20/pic/prototype.jpg)
+<strong>First prototype with pic16: In My VW T-Cross 2025</strong><br/>
+![Sch](https://github.com/LZ2HV/SSA/blob/aa41d21a928631c7bed4fb28985d4fc1029c4b20/pic/prototype.jpg)<br/>
+<strong>Second prototype with pic12:</strong><br/>
+![Sch](https://github.com/LZ2HV/SSA/blob/cfe604bd4576693114967200b578c861f054571c/pic/prototype2.jpg)
