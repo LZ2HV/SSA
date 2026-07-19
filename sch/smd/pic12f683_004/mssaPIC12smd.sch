@@ -10847,8 +10847,8 @@ Source: www.kingbright.com</description>
 <part name="GND4" library="supply1" deviceset="GND" device=""/>
 <part name="Q1" library="transistor-npn" library_urn="urn:adsk.eagle:library:398" deviceset="BC817*" device="SMD" package3d_urn="urn:adsk.eagle:package:28748/2" technology="-40LT1" value="BC817"/>
 <part name="GND5" library="supply1" deviceset="GND" device=""/>
-<part name="R1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="M1206" package3d_urn="urn:adsk.eagle:package:23566/2" value="15k"/>
-<part name="R2" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="M1206" package3d_urn="urn:adsk.eagle:package:23566/2" value="22k"/>
+<part name="R1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="M1206" package3d_urn="urn:adsk.eagle:package:23566/2" value="10k"/>
+<part name="R2" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="M1206" package3d_urn="urn:adsk.eagle:package:23566/2" value="15k"/>
 <part name="R3" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="M1206" package3d_urn="urn:adsk.eagle:package:23566/2" value="8.2k"/>
 <part name="GND6" library="supply1" deviceset="GND" device=""/>
 <part name="Q2" library="transistor-npn" library_urn="urn:adsk.eagle:library:398" deviceset="BC817*" device="SMD" package3d_urn="urn:adsk.eagle:package:28748/2" technology="-40LT1" value="BC817"/>
@@ -10884,7 +10884,7 @@ Source: www.kingbright.com</description>
 <part name="GND13" library="supply1" deviceset="GND" device=""/>
 <part name="R7" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="M1206" package3d_urn="urn:adsk.eagle:package:23566/2" value="15k"/>
 <part name="GND14" library="supply1" deviceset="GND" device=""/>
-<part name="R8" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="M1206" package3d_urn="urn:adsk.eagle:package:23566/2" value="50"/>
+<part name="R8" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="M1206" package3d_urn="urn:adsk.eagle:package:23566/2" value="100"/>
 <part name="GND15" library="supply1" deviceset="GND" device=""/>
 <part name="GND16" library="supply1" deviceset="GND" device=""/>
 <part name="GND17" library="supply1" deviceset="GND" device=""/>
@@ -10901,11 +10901,12 @@ Source: www.kingbright.com</description>
 <part name="GND20" library="supply1" deviceset="GND" device=""/>
 <part name="R15" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0603" package3d_urn="urn:adsk.eagle:package:23555/3" value="2.0k"/>
 <part name="D4" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="CGRM400*-G" device="" package3d_urn="urn:adsk.eagle:package:43457/2" technology="1" value="1N4001"/>
+<part name="R16" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="M1206" package3d_urn="urn:adsk.eagle:package:23566/2" value="33k"/>
 </parts>
 <sheets>
 <sheet>
 <plain>
-<text x="25.4" y="109.22" size="3.81" layer="91">LZ2HV T-Cross</text>
+<text x="15.24" y="111.76" size="3.81" layer="91">LZ2HV T-Cross</text>
 </plain>
 <instances>
 <instance part="C1" gate="G$1" x="53.34" y="93.98" smashed="yes">
@@ -11063,9 +11064,9 @@ Source: www.kingbright.com</description>
 <attribute name="NAME" x="-8.636" y="81.661" size="1.778" layer="95"/>
 <attribute name="VALUE" x="-8.636" y="76.581" size="1.778" layer="96"/>
 </instance>
-<instance part="D2" gate="G$1" x="-2.54" y="71.12" smashed="yes">
-<attribute name="NAME" x="0" y="71.6026" size="1.778" layer="95"/>
-<attribute name="VALUE" x="0" y="68.8086" size="1.778" layer="96"/>
+<instance part="D2" gate="G$1" x="2.54" y="71.12" smashed="yes">
+<attribute name="NAME" x="5.08" y="71.6026" size="1.778" layer="95"/>
+<attribute name="VALUE" x="5.08" y="68.8086" size="1.778" layer="96"/>
 </instance>
 <instance part="D3" gate="G$1" x="-10.16" y="50.8" smashed="yes" rot="R90">
 <attribute name="NAME" x="-10.6426" y="53.34" size="1.778" layer="95" rot="R90"/>
@@ -11144,6 +11145,10 @@ Source: www.kingbright.com</description>
 <instance part="D4" gate="G$1" x="53.34" y="68.58" smashed="yes" rot="R180">
 <attribute name="NAME" x="50.8" y="68.0974" size="1.778" layer="95" rot="R180"/>
 <attribute name="VALUE" x="50.8" y="70.8914" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="R16" gate="G$1" x="0" y="81.28" smashed="yes" rot="R90">
+<attribute name="NAME" x="-1.4986" y="77.47" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="3.302" y="77.47" size="1.778" layer="96" rot="R90"/>
 </instance>
 </instances>
 <busses>
@@ -11403,7 +11408,6 @@ Source: www.kingbright.com</description>
 <pinref part="C8" gate="G$1" pin="1"/>
 <wire x1="15.24" y1="71.12" x2="5.08" y2="71.12" width="0.1524" layer="91"/>
 <pinref part="D2" gate="G$1" pin="C"/>
-<wire x1="0" y1="71.12" x2="5.08" y2="71.12" width="0.1524" layer="91"/>
 <junction x="5.08" y="71.12"/>
 </segment>
 </net>
@@ -11453,10 +11457,13 @@ Source: www.kingbright.com</description>
 <pinref part="D3" gate="G$1" pin="C"/>
 <wire x1="-10.16" y1="53.34" x2="-10.16" y2="71.12" width="0.1524" layer="91"/>
 <pinref part="D2" gate="G$1" pin="A"/>
-<wire x1="-10.16" y1="71.12" x2="-5.08" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="-10.16" y1="71.12" x2="0" y2="71.12" width="0.1524" layer="91"/>
 <pinref part="C11" gate="G$1" pin="2"/>
 <wire x1="-10.16" y1="76.2" x2="-10.16" y2="71.12" width="0.1524" layer="91"/>
 <junction x="-10.16" y="71.12"/>
+<pinref part="R16" gate="G$1" pin="1"/>
+<wire x1="0" y1="76.2" x2="0" y2="71.12" width="0.1524" layer="91"/>
+<junction x="0" y="71.12"/>
 </segment>
 </net>
 <net name="N$13" class="0">
@@ -11464,6 +11471,9 @@ Source: www.kingbright.com</description>
 <pinref part="C11" gate="G$1" pin="1"/>
 <wire x1="-10.16" y1="83.82" x2="-10.16" y2="86.36" width="0.1524" layer="91"/>
 <pinref part="R8" gate="G$1" pin="1"/>
+<pinref part="R16" gate="G$1" pin="2"/>
+<wire x1="0" y1="86.36" x2="-10.16" y2="86.36" width="0.1524" layer="91"/>
+<junction x="-10.16" y="86.36"/>
 </segment>
 </net>
 <net name="N$14" class="0">
