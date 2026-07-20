@@ -11,7 +11,7 @@ For PIC16F684 HEX is "mssa_pic16f684.hex", for PIC12F683 HEX is "mssa_pic12f683.
 for PIC16F676 HEX is "mssa_pic16f676.hex", for PIC12F675 HEX is "mssa_pic12f675.hex".
 
 Connections: For T-Cross (Switch module 1 in centre console, module EX23, 10 pins connector black),
-1. LED = PWM signal 200Hz duty cycle 20-90% and or DC signal, from Start/Stop LED, (pin 6).
+1. LED = PWM signal 200Hz duty cycle 20-90%, and or DC (12V) signal, from Start/Stop LED, (pin 6).
 2. BUT = Button Start/Stop (pin 3).
 3. 12V = KL15, ignition (pin 9).
 4. GND = GND (pin 1).
