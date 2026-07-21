@@ -30,7 +30,7 @@ Schematics and boards is in directory "sch", thers have three variants, two with
 <strong>Important: If you are not tech savvy, do not attempt this.</strong><br/><br/>
 
 <strong>An important part of the circuits is the PWM and DC detector shown in the picture below.</strong><br/>.
-![Detector](https://github.com/LZ2HV/SSA/blob/cf42e5b7460e8cc7ac1b3853a859d5a398e6e124/pic/pwm_and_dc_detector.png)<br/>
+<p align="center">![Detector](https://github.com/LZ2HV/SSA/blob/cf42e5b7460e8cc7ac1b3853a859d5a398e6e124/pic/pwm_and_dc_detector.png)</p><br/>
 
 <strong>SMD variant: Gerber file sch/smd/mssaPIC12smd_2026-06-16.zip</strong>
 1. All zero resistors are not placed at the beginning (R9, R13, R14).
