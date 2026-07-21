@@ -11,7 +11,7 @@ For PIC16F684 HEX is "mssa_pic16f684.hex", for PIC12F683 HEX is "mssa_pic12f683.
 for PIC16F676 HEX is "mssa_pic16f676.hex", for PIC12F675 HEX is "mssa_pic12f675.hex".
 
 Connections: For T-Cross (Switch module 1 in centre console, module EX23, 10 pins connector black),
-1. LED = PWM signal 200Hz duty cycle 20-90%, and or DC (12V) signal, from Start/Stop LED, (pin 6).
+1. LED = PWM signal 200Hz duty cycle 5-90%, and or DC (12V) signal, from Start/Stop LED, (pin 6).
 2. BUT = Button Start/Stop (pin 3).
 3. 12V = KL15, ignition (pin 9).
 4. GND = GND (pin 1).
@@ -28,6 +28,10 @@ Schematics and boards is in directory "sch", thers have three variants, two with
  in down pictures is presented variant with SMD elements (directory sch/smd). 
  
 <strong>Important: If you are not tech savvy, do not attempt this.</strong><br/><br/>
+
+<strong>An important part of the circuits is the PWM and DC detector shown in the picture below.</strong><br/>.
+![Detector](https://github.com/LZ2HV/SSA/blob/cf42e5b7460e8cc7ac1b3853a859d5a398e6e124/pic/pwm_and_dc_detector.png)<br/>
+
 <strong>SMD variant: Gerber file sch/smd/mssaPIC12smd_2026-06-16.zip</strong>
 1. All zero resistors are not placed at the beginning (R9, R13, R14).
 2. Resistor R9 are placed after successfully programming.  
