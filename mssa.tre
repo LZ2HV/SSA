@@ -1,11 +1,14 @@
 ÀÄmssa
-   ÀÄMAIN  0/291  Ram=5
+   ÀÄMAIN  0/235  Ram=5
       ÃÄ@cinit1  (Inline)  Ram=0
       ÃÄ@cinit2  (Inline)  Ram=0
       ÃÄ@delay_ms1  0/20  Ram=1
       ÃÄ@delay_ms1  0/20  Ram=1
+      ÃÄread_eeprom_  0/9  Ram=1
       ÃÄ@delay_ms1  0/20  Ram=1
+      ÃÄread_eeprom_  0/9  Ram=1
       ÃÄ@delay_ms1  0/20  Ram=1
+      ÃÄwrite_eeprom_  0/24  Ram=2
       ÃÄ@delay_ms1  0/20  Ram=1
       ÃÄ@delay_ms1  0/20  Ram=1
       ÃÄwait1234sec  0/66  Ram=5
@@ -17,13 +20,15 @@
       ÃÄtry_to_on  0/23  Ram=0
       ³  ÃÄ@delay_ms1  0/20  Ram=1
       ³  ÀÄ@delay_ms1  0/20  Ram=1
+      ÃÄwrite_eeprom_  0/24  Ram=2
       ÃÄ@delay_ms1  0/20  Ram=1
       ÃÄ@delay_ms1  0/20  Ram=1
-      ÃÄrefresh_read_button  0/125  Ram=2
+      ÃÄrefresh_read_button  0/107  Ram=2
       ³  ÃÄis_on_ssa_led  0/58  Ram=5
       ³  ³  ÀÄ*
       ³  ÃÄ@delay_ms1  0/20  Ram=1
       ³  ÃÄ@delay_ms1  0/20  Ram=1
+      ³  ÃÄwrite_eeprom_  0/24  Ram=2
       ³  ÃÄ@DIV88  (Inline)  Ram=3
       ³  ÀÄled_flash  (Inline)  Ram=2
       ³     ÃÄ@delay_ms1  0/20  Ram=1
@@ -31,6 +36,7 @@
       ³     ÀÄ@delay_ms1  0/20  Ram=1
       ÃÄ@delay_ms1  0/20  Ram=1
       ÃÄ@delay_ms1  0/20  Ram=1
+      ÃÄwrite_eeprom_  0/24  Ram=2
       ÃÄ@delay_ms1  0/20  Ram=1
       ÃÄis_on_ssa_led  0/58  Ram=5
       ³  ÀÄ*

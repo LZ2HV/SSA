@@ -45,6 +45,8 @@
 #define BUFFER_SIZE           16
 #define PROGRAM_MEMORY_SIZE   getenv("PROGRAM_MEMORY")
 #define Storage          (PROGRAM_MEMORY_SIZE-BUFFER_SIZE)
+//#define HEF_ADDRESS Storage
+//#ROM int16 HEF_ADDRESS={3,30,16,10,3,2}
 #endif
 
 /* Microcontroller configuration bits */
@@ -74,34 +76,70 @@
 #define DEB_EXC_SAV_MIN (PIN_A5)//error PIN -2=PIN_A5 ???
 #endif
 
-#define MAX_SEC 40 //40=40*200=8s
-#define MIN_SEC 10 //10=10*200=2s
-#define DEF_SEC 30 //30=30*200=6s
+#define MAX_SEC 40 //40=40*200ms=8s = 8-flashing
+//      35         //35=35*200ms=7s = 7-flashing
+//      30         //30=30*200ms=6s = 6-flashing
+//      25         //25=25*200ms=5s = 5-flashing
+//      20         //20=20*200ms=4s = 4-flashing
+//      15         //15=15*200ms=3s = 3-flashing
+#define MIN_SEC 10 //10=10*200ms=2s = 2-flashing
+#define DEF_SEC 30 //30=30*200ms=6s = 6-flashing (default)
 
-#define COU_SAVE_SECL 15  //16-1=4s
-#define COU_SAVE_SECH 2   //3=750ms
-/*#define MAX_SSEC 24 //24=6s
-#define MIN_SSEC 4  //4=1s
-#define DEF_SSEC 16 //16=4s*/
+/*#define COU_SAVE_SECH 2   //3=750  3 *250ms=750ms
+#define MAX_SAVE_SECL 24  //24=6s  24*250ms=6s = 6-flashing
+//      20                //20=5s  20*250ms=5s = 5-flashing
+//      16                //16=4s  16*250ms=4s = 4-flashing
+//      12                //12=3s  12*250ms=3s = 3-flashing
+//      8                 //8=2s   8 *250ms=2s = 2-flashing
+#define MIN_SAVE_SECL 4   //4=1s   4 *250ms=1s = 1-flashing
+#define DEF_SAVE_SECL 8   //8=2s   8 *250ms=2s = 2-flashing (default)*/
+#define COU_SAVE_SECH 2
+#define COU_SAVE_SECL 8
 
-/*#define MAX_ESEC 16 //160*17=2720ms = 4-flashing
-//     14           //160*15=2400ms = 3-flashing
-//     12           //160*13=2080ms = 2-flashing
-#define MIN_ESEC 10 //160*11=1760ms = 1-flashing*/
-#define DEF_ESEC 12 
+/*#define MAX_ESEC 12 //160ms*13=2080ms = 6-flashing
+//     10           //160ms*11=1760ms = 5-flashing
+//     8            //160ms*9 =1440ms = 4-flashing
+//     6            //160ms*7 =1120ms = 3-flashing
+//     4            //160ms*5 =800ms  = 2-flashing
+#define MIN_ESEC 2  //160ms*3 =480ms  = 1-flashing
+#define DEF_ESEC 4  //160ms*5 =800ms  = 2-flashing (default)*/
+#define DEF_ESEC 4
 
-/*#define MAX_TCHK 7 //7-flashing =1120ms
-//      6          //6-flashing =960ms
-//      5          //5-flashing =800ms
-//      4          //4-flashing =640ms
-//      3          //3-flashing =480ms
-//      2          //2-flashing =320ms
-#define MIN_TCHK 1 //1-flashing =200ms-160ms*/
+
+/*#define MAX_TCHK 7 //7*160ms=1120ms 7-flashing 
+//      6          //6*160ms=960ms  6-flashing 
+//      5          //5*160ms=800ms  5-flashing 
+//      4          //4*160ms=640ms  4-flashing 
+//      3          //3*160ms=480ms  3-flashing 
+//      2          //2*160ms=320ms  2-flashing 
+#define MIN_TCHK 1 //200ms-160ms    1-flashing
+#define DEF_TCHK 3 //3*160ms=480ms  3-flashing (default)*/
 #define DEF_TCHK 3
 
-#define TRY_002 14 //14=3500ms
-#define TRY_003 24 //24=6000ms
-#define TRY_END 34 //34=8500ms
+/*
+int try002 = 12;//3000,2000,2000ms 1-flashing (default)
+int try003 = 20;
+int tryend = 28;
+if (try_cou==2)//3500,2500,2500ms 2-flashing
+{
+   try002 = 14;
+   try003 = 24;
+   tryend = 34;
+}
+if (try_cou==3)//4000,3000,3000ms 3-flashing
+{
+    try002 = 16;
+    try003 = 28;
+    tryend = 40;
+}
+*/
+/*#define MAX_TRY 3 //4000,3000,3000ms 3-flashing
+//      2         //3500,2500,2500ms 2-flashing
+#define MIN_TRY 1 //3000,2000,2000ms 1-flashing
+#define DEF_TRY 1 //3000,2000,2000ms 1-flashing (default)*/
+#define TRY_002 12
+#define TRY_003 20
+#define TRY_END 28
 
 BOOLEAN is_on_ssa_led(void)
 {

@@ -19,16 +19,19 @@
 02B     MAIN.c_try_on
 02C     MAIN.c_ss
 02D     MAIN.i
-02E.0   wait1234sec.res
+02E     read_eeprom_.addr
 02E     refresh_read_button.tread_ssa
+02E.0   wait1234sec.res
 02F     refresh_read_button.cflash
 02F     wait1234sec.to
-030     wait1234sec.count_except
 030     led_flash.z
 030     @DIV88.P1
-031     wait1234sec.i
+030     wait1234sec.count_except
+030     write_eeprom_.addr
 031     led_flash.i
+031     wait1234sec.i
 031     @DIV88.P1
+031     write_eeprom_.val
 032     wait1234sec.i
 032     @DIV88.@SCRATCH1
 033.0   is_on_ssa_led.res
@@ -41,29 +44,31 @@
 
 ROM Allocation:
 000004  @delay_ms1
-000018  is_on_ssa_led
-000052  wait1234sec
-000094  try_to_on
-0000AB  refresh_read_button
-0000F1  @DIV88
-000109  led_flash
-000128  @cinit1
-000128  MAIN
-00013E  @cinit2
+000018  read_eeprom_
+000021  write_eeprom_
+000039  is_on_ssa_led
+000073  wait1234sec
+0000B5  try_to_on
+0000CC  refresh_read_button
+000100  @DIV88
+000118  led_flash
+000137  @cinit1
+000137  MAIN
+00014D  @cinit2
 
 Project Directory:
-    D:\Install\VW\Manuals\T-cross_2024_bf3\MemSSA\MemSSA_16f684_03000_2026\
+    D:\Install\VW\Manuals\T-cross_2024_bf3\MemSSA\MemSSA_16f684_0381_2026\
 
 Project Files:
-    mssa.c                                                  [15-юли-26 09:41  CRC=98F7E576]
+    mssa.c                                                  [24-авг-26 09:37  CRC=78901587]
     ..\..\..\..\..\..\PICC_5115\Devices\16f684.h            [07-мар-23 19:18  CRC=80E9E0D1]
 
-Source signature=9ACBA718
+Source signature=7A63D729
 Program memory checksum=0000
-Hex file CRC=8607
+Hex file CRC=CEC7
 
 Units:
-    D:\Install\VW\Manuals\T-cross_2024_bf3\MemSSA\MemSSA_16f684_03000_2026\mssa (main)
+    D:\Install\VW\Manuals\T-cross_2024_bf3\MemSSA\MemSSA_16f684_0381_2026\mssa (main)
 
 Compiler Settings:
     Processor:      PIC16F684
