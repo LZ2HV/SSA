@@ -29,28 +29,28 @@ Schematics and boards is in directory "sch", thers have three variants, two with
  
 <strong>Important: If you are not tech savvy, do not attempt this.</strong><br/><br/>
 <strong>An important part of the circuits is the PWM and DC detector shown in the picture below.</strong><br/>.
-<p align="center"><img width="700" src="https://github.com/LZ2HV/SSA/blob/002290f8e90239da427d899ddd653dce939f4d57/pic/pwm_and_dc_detector.png" alt="Detector" /></p><br/>
+<p align="center"><img width="700" src="https://github.com/LZ2HV/SSA/blob/cc927dc8f0461d7fa84e423572eab12be6b7e272/pic/pwm_and_dc_detector.png" alt="Detector" /></p><br/>
 
 <strong>SMD variant: Gerber file sch/smd/mssaPIC12smd_2026-07-19.zip</strong>
 1. All zero resistors are not placed at the beginning (R9, R13, R14).
 2. Resistor R9 are placed after successfully programming.  
 3. If Button Start-Stop work with GND (T-Cross) Add R14, Remove R10 and R13.
 4. If Button Start-Stop work with Plus (some Skoda models) Add R13, Remove R14.<br/>
-![Top](https://github.com/LZ2HV/SSA/blob/70e6b150872ba1d83c70f19b9f05fb2fb6ac7dda/pic/top_pic.png)
-![Bottom](https://github.com/LZ2HV/SSA/blob/70e6b150872ba1d83c70f19b9f05fb2fb6ac7dda/pic/bottom_pic.png)<br/>
-![Sch](https://github.com/LZ2HV/SSA/blob/70e6b150872ba1d83c70f19b9f05fb2fb6ac7dda/pic/Sch.png)
+![Top](https://github.com/LZ2HV/SSA/blob/cc927dc8f0461d7fa84e423572eab12be6b7e272/pic/top_pic.png)
+![Bottom](https://github.com/LZ2HV/SSA/blob/cc927dc8f0461d7fa84e423572eab12be6b7e272/pic/bottom_pic.png)<br/>
+![Sch](https://github.com/LZ2HV/SSA/blob/cc927dc8f0461d7fa84e423572eab12be6b7e272/pic/Sch.png)
 
 <strong>DIP PIC12 variant: Gerber file sch/mssaPIC12_2026-07-19.zip, This variant work only for Button with GND.</strong><br/>
-![Top](https://github.com/LZ2HV/SSA/blob/70e6b150872ba1d83c70f19b9f05fb2fb6ac7dda/pic/top12dip.png)
-![Bottom](https://github.com/LZ2HV/SSA/blob/70e6b150872ba1d83c70f19b9f05fb2fb6ac7dda/pic/bott12dip.png)<br/>
-![Sch](https://github.com/LZ2HV/SSA/blob/70e6b150872ba1d83c70f19b9f05fb2fb6ac7dda/pic/sch12.png)
+![Top](https://github.com/LZ2HV/SSA/blob/cc927dc8f0461d7fa84e423572eab12be6b7e272/pic/top12dip.png)
+![Bottom](https://github.com/LZ2HV/SSA/blob/cc927dc8f0461d7fa84e423572eab12be6b7e272/pic/bott12dip.png)<br/>
+![Sch](https://github.com/LZ2HV/SSA/blob/cc927dc8f0461d7fa84e423572eab12be6b7e272/pic/sch12.png)
 
 <strong>DIP PIC16 variant: Gerber file sch/mssaPIC16_2026-07-19.zip, This variant work only for Button with GND.</strong><br/>
-![Top](https://github.com/LZ2HV/SSA/blob/70e6b150872ba1d83c70f19b9f05fb2fb6ac7dda/pic/top16dip.png)
-![Bottom](https://github.com/LZ2HV/SSA/blob/70e6b150872ba1d83c70f19b9f05fb2fb6ac7dda/pic/bott16dip.png)<br/>
-![Sch](https://github.com/LZ2HV/SSA/blob/70e6b150872ba1d83c70f19b9f05fb2fb6ac7dda/pic/sch16.png)
+![Top](https://github.com/LZ2HV/SSA/blob/cc927dc8f0461d7fa84e423572eab12be6b7e272/pic/top16dip.png)
+![Bottom](https://github.com/LZ2HV/SSA/blob/cc927dc8f0461d7fa84e423572eab12be6b7e272/pic/bott16dip.png)<br/>
+![Sch](https://github.com/LZ2HV/SSA/blob/cc927dc8f0461d7fa84e423572eab12be6b7e272/pic/sch16.png)
 
 <strong>First prototype with pic16: In My VW T-Cross 2025</strong><br/>
-![Sch](https://github.com/LZ2HV/SSA/blob/70e6b150872ba1d83c70f19b9f05fb2fb6ac7dda/pic/prototype.jpg)<br/>
+![Sch](https://github.com/LZ2HV/SSA/blob/cc927dc8f0461d7fa84e423572eab12be6b7e272/pic/prototype.jpg)<br/>
 <strong>Second prototype with pic12:</strong><br/>
-![Sch](https://github.com/LZ2HV/SSA/blob/70e6b150872ba1d83c70f19b9f05fb2fb6ac7dda/pic/prototype2.jpg)
+![Sch](https://github.com/LZ2HV/SSA/blob/cc927dc8f0461d7fa84e423572eab12be6b7e272/pic/prototype2.jpg)
