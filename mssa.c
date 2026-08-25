@@ -117,26 +117,26 @@
 #define DEF_TCHK 3
 
 /*
-int try002 = 12;//3000,2000,2000ms 1-flashing (default)
+int try002 = 12;//3000,2000,2000ms (default)
 int try003 = 20;
 int tryend = 28;
-if (try_cou==2)//3500,2500,2500ms 2-flashing
+if (try_cou==2)//3500,2500,2500ms
 {
    try002 = 14;
    try003 = 24;
    tryend = 34;
 }
-if (try_cou==3)//4000,3000,3000ms 3-flashing
+if (try_cou==3)//4000,3000,3000ms
 {
     try002 = 16;
     try003 = 28;
     tryend = 40;
 }
 */
-/*#define MAX_TRY 3 //4000,3000,3000ms 3-flashing
-//      2         //3500,2500,2500ms 2-flashing
-#define MIN_TRY 1 //3000,2000,2000ms 1-flashing
-#define DEF_TRY 1 //3000,2000,2000ms 1-flashing (default)*/
+/*#define MAX_TRY 3 //4000,3000,3000ms
+//      2           //3500,2500,2500ms
+#define MIN_TRY 1   //3000,2000,2000ms
+#define DEF_TRY 1   //3000,2000,2000ms (default)*/
 #define TRY_002 12
 #define TRY_003 20
 #define TRY_END 28
