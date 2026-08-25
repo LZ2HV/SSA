@@ -9007,7 +9007,7 @@ Source: www.kingbright.com</description>
 <part name="GND11" library="supply1" deviceset="GND" device=""/>
 <part name="C6" library="capacitor-wima" deviceset="C" device="5/2.5" value="10n"/>
 <part name="GND12" library="supply1" deviceset="GND" device=""/>
-<part name="C7" library="capacitor-wima" deviceset="C" device="5/2.5" value="220n"/>
+<part name="C7" library="capacitor-wima" deviceset="C" device="5/2.5" value="470n"/>
 <part name="GND13" library="supply1" deviceset="GND" device=""/>
 <part name="D2" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="1N4004" device="" package3d_urn="urn:adsk.eagle:package:43336/1"/>
 <part name="D3" library="diode" library_urn="urn:adsk.eagle:library:210" deviceset="1N4004" device="" package3d_urn="urn:adsk.eagle:package:43336/1"/>
